@@ -9,13 +9,16 @@ html, body{
 	width: 100%;
 }
 
-body, img {
+body, img, h3 {
 	margin: 0;
 	padding: 0;
 	font-family: comic sans MS !important;
 }
 
 .wrapper {
+	position: relative;
+	height: 100%;
+
 	.header {
 		height: 100px;
 		background-color: $header;
@@ -35,32 +38,38 @@ body, img {
 	}	
 	
 	.content-body {
-		min-height: 500px;
+		height: 100%;
 		background-color: $background;
+		
+		.content {
+			min-height: 100%;
+			padding-top: 20px;
 
-		.well {
-			border-radius: 0;
-			background-color: $loginform;
-			margin: 0px 20px 20px;
+			.well {
+				border-radius: 0;
+				background-color: $loginform;
+				margin: 0px 20px 20px;
 
-			.login-form {
-				padding: 20px 0px;
+				.login-form {
+					padding: 12px 0px;
 
-				input {
-					border-radius: 0; 
-					height: 45px; 
-					font-size: 17px;
-					margin-bottom: 10px;
-				}
+					input {
+						border-radius: 0; 
+						height: 45px; 
+						font-size: 17px;
+						margin-bottom: 10px;
+					}
 
-				button {
-					border-radius: 0; 
-					height: 45px;
-					font-size: 17px;
-					margin-bottom: 10px;
+					button {
+						border-radius: 0; 
+						height: 45px;
+						font-size: 17px;
+						margin-bottom: 10px;
+					}
 				}
 			}
 		}
+		
 		
 		footer {
 			padding: 15px 0px;
