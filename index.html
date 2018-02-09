@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
+	
+	
 	<title>Book Hut --- Share your book here</title>
 </head>
 <body>
@@ -49,7 +51,7 @@
 							<br>
 						    <div class="form-group">
 							    <div class="col-md-offset-4 col-md-4">
-							        <button type="submit" class="btn btn-success btn-block" id="myBtn"><b>Create New Account</b></button>
+							         <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal"><b>Create New Account</b></button>
 							    </div>
 						    </div>
 							<a href="#"><p class="text-center">Forgot account?</p></a>
@@ -62,9 +64,14 @@
 			</div>
 		</div>
 	</div>
+	 
 
-	<div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	    <div class="modal-dialog" role="document">
+		
+		<!-- <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog"> -->
+		
 	        <div class="modal-content">
 	            <div class="modal-header text-center">
 	                <h4 class="modal-title w-100 font-bold">Sign up</h4>
@@ -103,19 +110,11 @@
 	</div> -->
 
 
-	<!-- <script src="js/jquerylib.js"></script> -->
+	<script src="js/jquerylib.js"></script>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/wow.min.js"></script>
 	<script src="custom.js"></script>
-	<script src="js/modernizr-custom.js"></script>
-
-	<script>
-        $(document).ready(function(){
-            $("#myBtn").click(function(){
-                $("#modalRegisterForm").modal();
-            });
-        });
-    </script> 
+	<!-- <script src="js/modernizr-custom.js"></script> --> 
 </body>
 </html>
