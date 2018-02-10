@@ -78,3 +78,32 @@ body, img, h3 {
 		}
 	}
 }
+
+.modal-header {
+	background-color: $header;
+	padding:25px 40px;
+	
+	h4, .close {
+    color:white !important;
+    text-align: center;
+    font-size: 25px;
+	}
+}
+
+.modal-body {
+	background-color: $background;
+	padding:40px 50px;
+
+	form {
+
+		input {
+			border-radius: 0;
+			border: none;
+			border-bottom: 2px solid $header;
+		}
+	}
+}
+
+.modal-footer {
+    background-color: $footer;
+}
