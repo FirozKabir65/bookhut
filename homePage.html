@@ -18,36 +18,38 @@
 <body>
     <!---start-wrap---->
     <div class="wrap">
-
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top header">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    </button>
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
                     <a class="navbar-brand" href="index.php">Youth</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
+                        <li><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
                         <li><a href="category_news.php">Bangladesh</a></li>
                         <li><a href="#">International</a></li>
                         <li><a href="#">Sports</a></li>
                         <li><a href="#">Technology</a></li>
                         <li><a href="#">Media</a></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
         </nav>
         <!---start-sidebar---->
+        
         <div class="left-sidebar">
             <div class="logo">
-                <a href="index.html"><img src="images/templateImages/logo.png" title="logo" /></a>
+                <a href="index.html"><img src="images/logo.png" title="logo" /></a>
                 <h1>Feedlive Blogger site</h1>
             </div>
             <div class="top-nav">
@@ -61,16 +63,18 @@
             </div>
         </div>
 
+        
         <div class="content">
             <div class="grids">
                 <div class="grid box">
                     <div class="grid-header">
-                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod . </h3>
+                        <img class="user-profile" src="images/templateImages/3.jpg" alt=""><span><h3>&nbsp; User</h3></span>
+                        <br>
                         <ul>
-                            <li><span>Post By Admin on sunday,March 05,2013 with</span></li>
-                            <li><a href="#">5 comments</a></li>
+                            <li><span>&nbsp;&nbsp; Post By Admin on sunday,March 05,2013</span></li>
                         </ul>
-                    </div>
+                    </div><br>
+                    <div class="clear"> </div>
                     <div class="grid-img-content">
                         <a href="singlepage.html"><img src="images/templateImages/1.jpg" /></a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium perspiciatis unde omnis iste natus error sit voluptatem accusantiumdoloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum<a href="#">...</a></p>
@@ -81,31 +85,51 @@
                             <li><a href="#"><img src="images/templateImages/views.png" title="view" /></a></li>
                             <li><a href="#"><img src="images/templateImages/likes.png" title="likes" /></a></li>
                             <li><a href="#"><img src="images/templateImages/link.png" title="link" /></a></li>
-                            <li><a class="readmore" href="singlepage.html">ReadMore</a></li>
-                        </ul>
+                        </ul><br>
+                        <div class="well">
+                            <img class="user-comment-image" src="images/templateImages/3.jpg" alt="">&nbsp;
+                            <span>
+                                <form class="form-group comments-input">
+                                        <input type="text" class="form-control" id="usr" placeholder="Add a comment...">
+                                </form>
+                            </span>
+                            
+                            
+                            <img class="commentators-image" src="images/templateImages/3.jpg" alt="">&nbsp; <span><b>user-name</b></span><br>
+                            <small class="user-comments">comments</small><br><br>
+                            <a href="" class="btn btn-success">Edit</a>
+                            <a href="" class="btn btn-danger">Delete</a>
+                        </div>
                     </div>
+                    <br>
                 </div>
+                
                 <div class="clear"> </div>
             </div>
             <div class="clear"> </div>
-            <div class="content-pagenation">
+            <div class="pagination">
                 <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
+                <li class="active"><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
-                <li><a href="#">><span>....</span></a></li>
+                <li><a><span>....</span></a></li>
                 <div class="clear"> </div>
             </div>
-            <div class="clear"> </div>
-            <div class="footer">
-                <p>&#169; 2013 Feedlive . All Rights Reserved | Design By <a href="http://w3layouts.com/">W3Layouts</a></p>
-            </div>
-            <div class="clear"> </div>
+            
 
         </div>
-        
-    </div>
 
+        <!---end-sidebar---->
+        <div class="clear"> </div>
+            <div class="container-fluid">
+                <div class="row footer text-center">
+                <p>&copy; 2018 Book Hut. All Rights Reserved | By LazyWarriors</p>
+            </div>
+            </div>
+            <div class="clear"> </div>
+    </div>
     <!---end-wrap---->
+
+
     <script src="js/jquerylib.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
