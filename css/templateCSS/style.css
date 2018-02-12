@@ -237,9 +237,10 @@ body {
     border: 0px;
 }
 
-.navbar-brand {
-    padding: 25px;
-    color: white !important;
+.navbar-brand img {
+   	height: 140px; 
+   	width: 140px;  
+   	margin-top: -32px;
 }
 
 .navbar-inverse .navbar-toggle {
@@ -247,17 +248,35 @@ body {
 	background-color: none;
 }
 
+.navbar-inverse .navbar-collapse {
+	border-color: #4682B4;
+}
+
 .navbar-inverse .navbar-toggle:hover {
 	background-color: #4682B4;
 }
 
+.navbar-inverse .navbar-toggle:focus {
+	background-color: none !important;
+}
+
+/*.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a, 	.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus, 	.navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover { 		color: #fff; 		background-color: #080808 	}*/
+
 .navbar-nav li a {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     color: white !important;
-    font-size: 20px;
+    font-size: 25px;
     background-color: #4682B4;
 }
+/*
+.navbar-nav li a fa-home:hover {
+	color: red !important;
+}*/
+
+/*.navbar-nav li a:hover, .navbar-nav li a:focus {
+	background-color: red;
+}*/
 
 .left-sidebar {
 	width: 18%;
@@ -265,29 +284,45 @@ body {
     position: fixed;
 	float: left;
 	background: #fff;
-	border-bottom: 10px solid #ea4c89;
+	border-bottom: 10px solid #4682B4;
 }
 
-.logo {
+.left-sidebar .logo {
 	text-align: center;
 	padding: 24px 27px;
-	background: #ea4c89;
+	background: #4682B4;
 }
 
-.logo h1 {
-	font-family: 'Merriweather Sans', sans-serif;
-	font-size: 0.8em;
+.left-sidebar .logo img {
+	height: 150px; 
+	width: 150px; 
+	border-radius: 50%;
+}
+
+.left-sidebar .logo h1 {
+	/*font-family: 'Merriweather Sans', sans-serif;*/
+	/*font-size: 0.8em;*/
 	color: #fff;
 	margin-top: 6px;
 }
 
 .top-nav {
 	background: #fff;
-	font-family: 'Merriweather Sans', sans-serif;
+	/*font-family: 'Merriweather Sans', sans-serif;*/
 	font-size: 0.8em;
 }
 
-.top-nav ul li a {
+.top-nav button {
+	margin: 20% 30%;
+	background-color: rgba(44, 62, 80, 0.9);
+	border: none;
+	padding: 8px 10px;
+}
+
+.top-nav button:hover {
+	background-color: rgba(44, 62, 80);
+}
+/*.top-nav ul li a {
 	color: rgb(80, 80, 80);
 	font-weight: bold;
 	font-size: 1em;
@@ -304,8 +339,8 @@ body {
 
 .top-nav ul li a:hover {
 	background: rgba(223, 223, 223, 0.98);
-	color: #ea4c89;
-}
+	color: #4682B4;
+}*/
 
 .social-icons ul li {
 	display: inline-block;
@@ -412,6 +447,10 @@ body {
 .comments li {
 	display: inline-block;
 	margin-top: 10px;
+}
+
+.comments .fa-2x {
+	font-size: 1.5em;
 }
 
 .grid-img-content {
@@ -785,7 +824,7 @@ body {
 		width: 90%;
 	}
 	.logo h1 {
-		font-size: 0.7em;
+		/*font-size: 0.7em;*/
 		margin-top: 3px;
 	}
 	.social-icons ul li {

@@ -13,6 +13,8 @@
     <link href="css/templateCSS/style.css" rel="stylesheet" type="text/css" media="all" />
 
     <title>Book Hut :: Share your books here</title>
+
+    
 </head>
 
 <body>
@@ -22,23 +24,23 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="background-color: #4682B4;">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                        </button>
-                    <a class="navbar-brand" href="index.php">Youth</a>
+                    </button>
+                    <a class="navbar-brand" href="index.php"><img src="images/bhlogo.png" alt="BookHut" class="image-responsive"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
-                        <li><a href="category_news.php">Bangladesh</a></li>
-                        <li><a href="#">International</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Media</a></li>
+                        <li><a href="index.php"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
+                        <li><a href="category_news.php"><i class="fab fa-facebook-messenger" title="MSG"></i></a></li>
+                        <li><a href="#"><i class="fas fa-bell" title="NotiFication"></i></a></li>
+                        <li><a href="#"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>
+                        <li><a href="#"><i class="fas fa-search" title="Search"></i></a></li>
+                        <li><a href="#"><i class="fas fa-sign-out-alt" title="LogOut"></i></a></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -49,17 +51,11 @@
         
         <div class="left-sidebar">
             <div class="logo">
-                <a href="index.html"><img src="images/logo.png" title="logo" /></a>
-                <h1>Feedlive Blogger site</h1>
+                <a href="index.html"><img src="images/templateImages/man.jpg" title="logo"></a>
+                <h1>Bruce Wayne</h1>
             </div>
             <div class="top-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+                <button type="btn" class="btn btn-info">View Profile</button>
             </div>
         </div>
 
@@ -82,9 +78,7 @@
                     </div>
                     <div class="comments">
                         <ul>
-                            <li><a href="#"><img src="images/templateImages/views.png" title="view" /></a></li>
-                            <li><a href="#"><img src="images/templateImages/likes.png" title="likes" /></a></li>
-                            <li><a href="#"><img src="images/templateImages/link.png" title="link" /></a></li>
+                            <li><a href="#"><i class="fas fa-2x fa-heart"></i></a></li>
                         </ul><br>
                         <div class="well">
                             <img class="user-comment-image" src="images/templateImages/3.jpg" alt="">&nbsp;
@@ -129,7 +123,7 @@
     </div>
     <!---end-wrap---->
 
-
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="js/jquerylib.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
