@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="FeedLive iphone web template, Android web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <meta name="keywords" content="" />
     <link href='//fonts.googleapis.com/css?family=Merriweather+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -38,7 +38,7 @@
                         <li><a href="index.php"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
                         <li><a href="category_news.php"><i class="fab fa-facebook-messenger" title="MSG"></i></a></li>
                         <li><a href="#"><i class="fas fa-bell" title="NotiFication"></i></a></li>
-                        <li><a href="#"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>
                         <li><a href="#"><i class="fas fa-search" title="Search"></i></a></li>
                         <li><a href="#"><i class="fas fa-sign-out-alt" title="LogOut"></i></a></li>
                     </ul>
@@ -64,7 +64,7 @@
             <div class="grids">
                 <div class="grid box">
                     <div class="grid-header">
-                        <img class="user-profile" src="images/templateImages/3.jpg" alt=""><span><h3>&nbsp; User</h3></span>
+                        <img class="user-profile" src="images/templateImages/man.jpg" alt=""><span><h3>&nbsp; User</h3></span>
                         <br>
                         <ul>
                             <li><span>&nbsp;&nbsp; Post By Admin on sunday,March 05,2013</span></li>
@@ -81,7 +81,7 @@
                             <li><a href="#"><i class="fas fa-2x fa-heart"></i></a></li>
                         </ul><br>
                         <div class="well">
-                            <img class="user-comment-image" src="images/templateImages/3.jpg" alt="">&nbsp;
+                            <img class="user-comment-image" src="images/templateImages/man.jpg" alt="">&nbsp;
                             <span>
                                 <form class="form-group comments-input">
                                         <input type="text" class="form-control" id="usr" placeholder="Add a comment...">
@@ -89,7 +89,7 @@
                             </span>
                             
                             
-                            <img class="commentators-image" src="images/templateImages/3.jpg" alt="">&nbsp; <span><b>user-name</b></span><br>
+                            <img class="commentators-image" src="images/templateImages/man.jpg" alt="">&nbsp; <span><b>user-name</b></span><br>
                             <small class="user-comments">comments</small><br><br>
                             <a href="" class="btn btn-success">Edit</a>
                             <a href="" class="btn btn-danger">Delete</a>
@@ -122,6 +122,72 @@
             <div class="clear"> </div>
     </div>
     <!---end-wrap---->
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><i class="fas fa-cloud-upload-alt"></i></span> Upload your Book</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Blog Title:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="blog_title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Author Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="author_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Blog Description:</label>
+                            <div class="col-sm-10">
+                                <textarea name="blog_description" class="form-control" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Select Image:</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="image" multiple accept="image/*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Publication Status:</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="publication_status">
+                                    <option>---Select Publication Status---</option>
+                                    <option value="1">Published</option>
+                                    <option value="0">Unpublished</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" name="btn" class="btn btn-success btn-block">Save Blog Info</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+                $("#myModal").modal();
+            });
+        });
+    </script> 
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="js/jquerylib.js"></script>
