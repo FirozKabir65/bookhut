@@ -19,7 +19,7 @@
 
 <body>
     <!---start-wrap---->
-    <div class="wrap">
+    <div class="wrap container">
         <nav class="navbar navbar-inverse navbar-fixed-top header">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,8 +46,7 @@
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container-fluid -->
-        </nav>
-        <!---start-sidebar---->
+        </nav> 
         
         <div class="left-sidebar">
             <div class="logo">
@@ -59,58 +58,59 @@
             </div>
         </div>
 
-        
         <div class="content">
-            <div class="grids">
-                <div class="grid box">
-                    <div class="grid-header">
-                        <img class="user-profile" src="images/templateImages/man.jpg" alt=""><span><h3>&nbsp; User</h3></span>
-                        <br>
-                        <ul>
-                            <li><span>&nbsp;&nbsp; Post By Admin on sunday,March 05,2013</span></li>
-                        </ul>
-                    </div><br>
-                    <div class="clear"> </div>
-                    <div class="grid-img-content">
-                        <a href="singlepage.html"><img src="images/templateImages/1.jpg" /></a>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium perspiciatis unde omnis iste natus error sit voluptatem accusantiumdoloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum<a href="#">...</a></p>
-                        <div class="clear"> </div>
-                    </div>
-                    <div class="comments">
-                        <ul>
-                            <li><a href="#"><i class="fas fa-2x fa-heart"></i></a></li>
-                        </ul><br>
-                        <div class="well">
-                            <img class="user-comment-image" src="images/templateImages/man.jpg" alt="">&nbsp;
-                            <span>
-                                <form class="form-group comments-input">
-                                        <input type="text" class="form-control" id="usr" placeholder="Add a comment...">
-                                </form>
-                            </span>
-                            
-                            
-                            <img class="commentators-image" src="images/templateImages/man.jpg" alt="">&nbsp; <span><b>user-name</b></span><br>
-                            <small class="user-comments">comments</small><br><br>
-                            <a href="" class="btn btn-success">Edit</a>
-                            <a href="" class="btn btn-danger">Delete</a>
+            <div class="well">
+                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Select Book:</label>
+                        <div class="col-sm-9">
+                            <input type="file" name="book_image" multiple accept="images/*">
                         </div>
                     </div>
-                    <br>
-                </div>
-                
-                <div class="clear"> </div>
-            </div>
-            <div class="clear"> </div>
-            <div class="pagination">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a><span>....</span></a></li>
-                <div class="clear"> </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Book Name:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="book_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Book Category:</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="book_category">
+                                <option>---Select Book Category---</option>
+                                <option value="1">Published</option>
+                                <option value="0">Unpublished</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Author Name:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" name="author_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Book Description:</label>
+                        <div class="col-sm-9">
+                            <textarea name="book_description" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Select Book:</label>
+                        <div class="col-sm-9">
+                            <input type="file" name="book" multiple accept="pdf/*">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-cloud-upload-alt"></i> Upload Book</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <!---end-sidebar---->
         <div class="clear"> </div>
         <div class="container-fluid">
             <div class="row footer text-center">
@@ -118,9 +118,9 @@
             </div>
         </div>
         <div class="clear"> </div>
-    </div>
-    <!---end-wrap---->
- 
+        
+    </div>              
+
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="js/jquerylib.js"></script>
