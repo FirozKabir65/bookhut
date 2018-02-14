@@ -4,9 +4,13 @@ $loginform: #ecf0f1;
 $footer: #2c3e50;
 
 
-html, body{
+html, body {
 	height: 100%;
 	width: 100%;
+}
+
+body {
+	background-image: url('images/templateImages/bg.png');
 }
 
 body, img, h3 {
@@ -15,98 +19,108 @@ body, img, h3 {
 	font-family: comic sans MS !important;
 }
 
-.wrapper {
-	position: relative;
+.wrap {
 	height: 100%;
-
-	.header {
-		height: 100px;
-		background-color: $header;
-		margin-bottom: 0;
-		border: 0;
-		border-radius: 0;
-		
-		.navbar-brand {
-			padding: 0;
-			margin-top: -15px;
-
-			img {
-				height: 180px;
-				width: 200px;
-			}
-		}
-	}	
 	
-	.content-body {
-		height: 100%;
-		background-color: $background;
+	.header {
+	    height: 70px;
+	    background-color: #4682B4;
+	    border: 0px;
+
+	    .navbar-toggle {
+			border: none;
+			background-color: none;
+		}
+
+		.navbar-toggle:hover {
+			background-color: #4682B4;
+		}
+
+		.navbar-toggle:focus {
+			background-color: none !important;
+		}
+
+	    .navbar-brand img {
+		   	height: 140px; 
+		   	width: 140px;  
+		   	margin-top: -32px;
+		}
+
+		.navbar-collapse {
+			border-color: #4682B4;
+		}
 		
-		.content {
-			min-height: 100%;
-			padding-top: 20px;
+		.navbar-nav li a {
+		    padding-top: 20px;
+		    padding-bottom: 20px;
+		    color: white !important;
+		    font-size: 25px;
+		    background-color: #4682B4;
+		}
 
-			.well {
-				border-radius: 0;
-				background-color: $loginform;
-				margin: 0px 20px 20px;
+	}
 
-				.login-form {
-					padding: 12px 0px;
+	.upload-content-body {
 
-					input {
-						border-radius: 0; 
-						height: 45px; 
-						font-size: 17px;
-						margin-bottom: 10px;
-					}
+		.left-sidebar {
+		    margin-top: 90px;
+		    // position: fixed;
+			// float: left;
+			background: #fff;
+			border-bottom: 10px solid $header;
 
-					button {
-						border-radius: 0; 
-						height: 45px;
-						font-size: 17px;
-						margin-bottom: 10px;
-					}
-					input[type="checkbox"], input[type="radio"]{
-						margin: -11px -18px 0px;
-					}
+			.pro_pic {
+				text-align: center;
+				padding: 24px 27px;
+				background: #4682B4;
+
+				img {
+					height: 150px; 
+					width: 150px; 
+					border-radius: 50%;
+				}
+
+				h3 {
+					color: #fff;
+					margin-top: 6px;
 				}
 			}
+
+			.top-nav {
+				background: #fff;
+				font-size: 0.8em;
+
+				button {
+					margin: 20% 30%;
+					background-color: rgba(44, 62, 80, 0.9);
+					border: none;
+					padding: 8px 10px;
+
+					&:hover {
+						background-color: rgb(44, 62, 80);
+					}
+				}
+
+			}
 		}
-		
-		
-		footer {
-			padding: 15px 0px;
-			background-color: $footer;
-			color: white;
+
+		.upload-content {
+		    background-color: rgba(255, 255, 255, 0.7);
+			// float: right;
+		    margin-top: 90px;
+		    // margin-left: 10px;
+		    // padding: 13px 22px 0px 22px;
+		    padding: 22px;
 		}
+
 	}
-}
 
-.modal-header {
-	background-color: $header;
-	padding:25px 40px;
-	
-	h4, .close {
-    color:white !important;
-    text-align: center;
-    font-size: 25px;
+	.footer {
+		background-color: #2c3e50; 
+		color: white !important;
+		padding: 15px 0px; 
+		margin-top: 20px;
+	    // margin-left: -30px;
+	    // margin-right: -30px;
 	}
-}
-
-.modal-body {
-	background-color: $loginform;
-	padding:40px 50px;
-
-	form {
-
-		input {
-			border-radius: 0;
-			border: none;
-			border-bottom: 2px solid $header;
-		}
-	}
-}
-
-.modal-footer {
-    background-color: $footer;
 }

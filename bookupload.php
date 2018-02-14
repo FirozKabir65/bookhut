@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="css/templateCSS/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="style.css">
 
     <title>Book Hut :: Share your books here</title>
 
@@ -48,76 +48,76 @@
             <!-- /.container-fluid -->
         </nav> 
         
-        <div class="left-sidebar">
-            <div class="logo">
-                <a href="index.html"><img src="images/templateImages/man.jpg" title="logo"></a>
-                <h1>Bruce Wayne</h1>
+        <div class="upload-content-body row col-md-12">
+            <div class="left-sidebar col-md-3">
+                <div class="pro_pic">
+                    <a href="index.html"><img src="images/templateImages/man.jpg" title="pro_pic"></a>
+                    <h3>Bruce Wayne</h3>
+                </div>
+                <div class="top-nav">
+                    <button type="btn" class="btn btn-info">View Profile</button>
+                </div>
             </div>
-            <div class="top-nav">
-                <button type="btn" class="btn btn-info">View Profile</button>
+
+            <div class="upload-content col-md-offset-1 col-md-8">
+                <div class="well">
+                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Select Book:</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="book_image" multiple accept="images/*">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Book Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="book_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Book Category:</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="book_category">
+                                    <option>---Select Book Category---</option>
+                                    <option value="1">Published</option>
+                                    <option value="0">Unpublished</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Author Name:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="author_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Book Description:</label>
+                            <div class="col-sm-9">
+                                <textarea name="book_description" class="form-control" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Select Book:</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="book" multiple accept="pdf/*">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-cloud-upload-alt"></i> Upload Book</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <div class="content">
-            <div class="well">
-                <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Select Book:</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="book_image" multiple accept="images/*">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Book Name:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="book_name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Book Category:</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="book_category">
-                                <option>---Select Book Category---</option>
-                                <option value="1">Published</option>
-                                <option value="0">Unpublished</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Author Name:</label>
-                        <div class="col-sm-9">
-                            <input type="text" class="form-control" name="author_name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Book Description:</label>
-                        <div class="col-sm-9">
-                            <textarea name="book_description" class="form-control" rows="4"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Select Book:</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="book" multiple accept="pdf/*">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-9">
-                            <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-cloud-upload-alt"></i> Upload Book</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="clear"> </div>
-        <div class="container-fluid">
+        <div class="container-fluid col-md-12">
             <div class="row footer text-center">
                 <p>&copy; 2018 Book Hut. All Rights Reserved | By LazyWarriors</p>
             </div>
         </div>
-        <div class="clear"> </div>
         
     </div>              
 

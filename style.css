@@ -2,72 +2,72 @@ html, body {
   height: 100%;
   width: 100%; }
 
+body {
+  background-image: url("images/templateImages/bg.png"); }
+
 body, img, h3 {
   margin: 0;
   padding: 0;
   font-family: comic sans MS !important; }
 
-.wrapper {
-  position: relative;
+.wrap {
   height: 100%; }
-  .wrapper .header {
-    height: 100px;
+  .wrap .header {
+    height: 70px;
     background-color: #4682B4;
-    margin-bottom: 0;
-    border: 0;
-    border-radius: 0; }
-    .wrapper .header .navbar-brand {
-      padding: 0;
-      margin-top: -15px; }
-      .wrapper .header .navbar-brand img {
-        height: 180px;
-        width: 200px; }
-  .wrapper .content-body {
-    height: 100%;
-    background-color: #bdc3c7; }
-    .wrapper .content-body .content {
-      min-height: 100%;
-      padding-top: 20px; }
-      .wrapper .content-body .content .well {
-        border-radius: 0;
-        background-color: #ecf0f1;
-        margin: 0px 20px 20px; }
-        .wrapper .content-body .content .well .login-form {
-          padding: 12px 0px; }
-          .wrapper .content-body .content .well .login-form input {
-            border-radius: 0;
-            height: 45px;
-            font-size: 17px;
-            margin-bottom: 10px; }
-          .wrapper .content-body .content .well .login-form button {
-            border-radius: 0;
-            height: 45px;
-            font-size: 17px;
-            margin-bottom: 10px; }
-          .wrapper .content-body .content .well .login-form input[type="checkbox"], .wrapper .content-body .content .well .login-form input[type="radio"] {
-            margin: -11px -18px 0px; }
-    .wrapper .content-body footer {
-      padding: 15px 0px;
-      background-color: #2c3e50;
-      color: white; }
-
-.modal-header {
-  background-color: #4682B4;
-  padding: 25px 40px; }
-  .modal-header h4, .modal-header .close {
+    border: 0px; }
+    .wrap .header .navbar-toggle {
+      border: none;
+      background-color: none; }
+    .wrap .header .navbar-toggle:hover {
+      background-color: #4682B4; }
+    .wrap .header .navbar-toggle:focus {
+      background-color: none !important; }
+    .wrap .header .navbar-brand img {
+      height: 140px;
+      width: 140px;
+      margin-top: -32px; }
+    .wrap .header .navbar-collapse {
+      border-color: #4682B4; }
+    .wrap .header .navbar-nav li a {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      color: white !important;
+      font-size: 25px;
+      background-color: #4682B4; }
+  .wrap .upload-content-body .left-sidebar {
+    margin-top: 90px;
+    background: #fff;
+    border-bottom: 10px solid #4682B4; }
+    .wrap .upload-content-body .left-sidebar .pro_pic {
+      text-align: center;
+      padding: 24px 27px;
+      background: #4682B4; }
+      .wrap .upload-content-body .left-sidebar .pro_pic img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%; }
+      .wrap .upload-content-body .left-sidebar .pro_pic h3 {
+        color: #fff;
+        margin-top: 6px; }
+    .wrap .upload-content-body .left-sidebar .top-nav {
+      background: #fff;
+      font-size: 0.8em; }
+      .wrap .upload-content-body .left-sidebar .top-nav button {
+        margin: 20% 30%;
+        background-color: rgba(44, 62, 80, 0.9);
+        border: none;
+        padding: 8px 10px; }
+        .wrap .upload-content-body .left-sidebar .top-nav button:hover {
+          background-color: #2c3e50; }
+  .wrap .upload-content-body .upload-content {
+    background-color: rgba(255, 255, 255, 0.7);
+    margin-top: 90px;
+    padding: 22px; }
+  .wrap .footer {
+    background-color: #2c3e50;
     color: white !important;
-    text-align: center;
-    font-size: 25px; }
-
-.modal-body {
-  background-color: #ecf0f1;
-  padding: 40px 50px; }
-  .modal-body form input {
-    border-radius: 0;
-    border: none;
-    border-bottom: 2px solid #4682B4; }
-
-.modal-footer {
-  background-color: #2c3e50; }
+    padding: 15px 0px;
+    margin-top: 20px; }
 
 /*# sourceMappingURL=style.css.map */
