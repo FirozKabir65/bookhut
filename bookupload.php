@@ -48,9 +48,9 @@
             <!-- /.container-fluid -->
         </nav> 
         
-        <div class="upload-content-body row col-md-12">
+        <div class="upload-content-body row" style="">
             <div class="left-sidebar col-md-3">
-                <div class="pro_pic">
+                <div class="pro_pic row">
                     <a href="index.html"><img src="images/templateImages/man.jpg" title="pro_pic"></a>
                     <h3>Bruce Wayne</h3>
                 </div>
@@ -113,11 +113,11 @@
             </div>
         </div>
 
-        <div class="container-fluid col-md-12">
+        <!-- <div class="container"> -->
             <div class="row footer text-center">
                 <p>&copy; 2018 Book Hut. All Rights Reserved | By LazyWarriors</p>
             </div>
-        </div>
+        <!-- </div> -->
         
     </div>              
 
