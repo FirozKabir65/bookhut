@@ -1,3 +1,22 @@
+<?php 
+
+	require_once 'class/login.php';
+	$message ="";
+	if(isset($_POST['btn'])){
+			
+		$registration = new Registration();
+		$message = $registration->save_user_info($_POST);
+	}
+
+	if(isset($_POST['loginBtn'])){
+			
+		$login = new Registration();
+		$login->check_user_info($_POST);
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,16 +49,18 @@
 				<div class="content">
 					<div class="well">
 						<form class="form-horizontal login-form" action="" method="post">
+							<h3 class="text-center text-success"><?php echo $message ;?></h3>
+							<br>
 							<h3 class="text-center">Log into BookHut</h3>
 							<br>
 						    <div class="form-group">
 							    <div class="col-md-offset-3 col-md-6">
-							        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email">
+							        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required>
 							    </div>
 						    </div>
 						    <div class="form-group">
 							    <div class="col-md-offset-3 col-md-6">
-							        <input type="password" class="form-control" id="inputEmail3" placeholder="Password" name="password">
+							        <input type="password" class="form-control" id="inputEmail3" placeholder="Password" name="password" required>
 							    </div>
 						    </div>
 							<div class="form-group">
@@ -53,7 +74,7 @@
 						  </div>
 						    <div class="form-group">
 							    <div class="col-md-offset-3 col-md-6">
-							        <button type="submit" class="btn btn-primary btn-block" name="btn"><b>Log In</b></button>
+							        <button type="submit" class="btn btn-primary btn-block" name="loginBtn"><b>Log In</b></button>
 							    </div>
 						    </div>
 							<p class="text-center"><b>---------------------------- or ----------------------------</b></p>
@@ -74,6 +95,8 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Modal start-->
 	 
 
 	<div class="modal fade" id="myModal" role="dialog">
@@ -86,24 +109,27 @@
 		            <h4><span class="fa fa-user-plus"></span> SignUp</h4>
 		        </div>
 		        <div class="modal-body">
-		            <form role="form">
+		            <form role="form" method="post" action="">
 		            	<div class="form-group">
-		              		<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+		              		<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
 		            	</div>
 			            <div class="form-group">
-			              	<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+			              	<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
 			            </div>
 			            <div class="form-group">
-			              	<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+			              	<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
 			            </div>
 			            <div class="form-group">
-			              	<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+			              	<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 			            </div>
 			            <div class="form-group">
-			              	<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+			              	<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required onkeyup="validate()">
 			            </div>
+			            <p id="res1"></p>
+			            <p id="res"></p>
+			            
 			            <div class="form-group">
-			              	<select name="gender" id="gender" class="form-control">
+			              	<select name="gender" id="gender" class="form-control" required>
 			              		<option value="">--- Select Gender ---</option>
 			              		<option value="0">Male</option>
 			              		<option value="1">Female</option>
@@ -125,7 +151,23 @@
 		        $("#myModal").modal();
 		    });
 		});
+
+		function validate() {
+			var x= document.getElementById("password");
+			var y= document.getElementById("confirmPassword");
+			if(x.value==y.value){
+				var res = document.getElementById("res");
+				res.style.color = "green";
+				res.innerHTML = "Password matched";
+			}
+			else {
+				var res = document.getElementById("res");
+				res.style.color = "red";
+				res.innerHTML = "Password did not match";		
+			};
+		}
 	</script> 
+
 
 
 	<script src="js/jquerylib.js"></script>

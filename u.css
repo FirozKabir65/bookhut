@@ -1,0 +1,78 @@
+html, body {
+  height: 100%;
+  width: 100%; }
+
+body {
+  background-image: url("images/templateImages/bg.png"); }
+
+body, img, h3 {
+  margin: 0;
+  padding: 0;
+  font-family: comic sans MS !important; }
+
+.menu {
+  height: 70px; }
+
+.header {
+  height: 70px;
+  background-color: #4682B4;
+  border: 0px; }
+  .header .navbar-toggle {
+    border: none;
+    background-color: none; }
+  .header .navbar-toggle:hover {
+    background-color: #4682B4; }
+  .header .navbar-toggle:focus {
+    background-color: none !important; }
+  .header .navbar-brand img {
+    height: 140px;
+    width: 140px;
+    margin-top: -32px; }
+  .header .navbar-collapse {
+    border-color: #4682B4; }
+  .header .navbar-nav li a {
+    padding-top: 20px;
+    color: white !important;
+    font-size: 25px;
+    background-color: #4682B4; }
+
+.content-body {
+  margin-top: 20px;
+  min-height: 100%; }
+  .content-body .left-sidebar {
+    background: #fff;
+    border-bottom: 10px solid #4682B4; }
+    .content-body .left-sidebar .pro_pic {
+      text-align: center;
+      padding: 24px 27px;
+      background: #4682B4; }
+      .content-body .left-sidebar .pro_pic img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%; }
+      .content-body .left-sidebar .pro_pic h3 {
+        color: #fff;
+        margin-top: 6px; }
+    .content-body .left-sidebar .view-profile {
+      background: #fff;
+      padding-top: 50px;
+      padding-bottom: 50px; }
+      .content-body .left-sidebar .view-profile button {
+        background-color: rgba(44, 62, 80, 0.9);
+        border: none;
+        padding: 8px 10px; }
+        .content-body .left-sidebar .view-profile button:hover {
+          background-color: #2c3e50; }
+  .content-body .main-content {
+    border: 2px solid lightgrey; }
+    .content-body .main-content .row {
+      background-color: #ecf0f1;
+      padding: 30px 30px 20px 20px; }
+
+.footer {
+  background-color: #2c3e50;
+  color: white !important;
+  padding: 15px 0px;
+  margin-top: 20px; }
+
+/*# sourceMappingURL=u.css.map */

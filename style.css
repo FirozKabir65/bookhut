@@ -2,9 +2,6 @@ html, body {
   height: 100%;
   width: 100%; }
 
-body {
-  background-image: url("images/templateImages/bg.png"); }
-
 body, img, h3 {
   margin: 0;
   padding: 0;
