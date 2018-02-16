@@ -110,14 +110,16 @@ body, img, h3 {
 
 	.main-content {
 		border: 2px solid lightgrey;
+		background-color: rgba(255, 255, 255, 0.5);
+
 
 		.bookup-row {
-			background-color: $loginform;
+			// background-color: $loginform;
 			padding: 30px 30px 20px 20px;
 		}
 
 		.homepage-row {
-			background-color: $loginform;
+			// background-color: $loginform;
 			padding: 20px 20px 20px 15px;
 
 			.post-user {
@@ -127,24 +129,49 @@ body, img, h3 {
 		}
 
 		.homepage-book-row {
-			background-color: $loginform;
+			// background-color: $loginform;
 			padding: 20px 20px 20px 15px;
 		}
 
 		.comments {
-			background-color: $loginform;
+			// background-color: $loginform;
 			padding: 20px 20px 20px 15px;
 
 			li {
 				display: inline-block;
 				margin-top: 10px;
 				text-decoration: none;
+				list-style: none;
 
 				.fa-2x {
 					font-size: 1.5em;
 				}
 			}
+			
+			.user-comment-image {
+			    height: 40px; 
+			    width: 40px; 
+			    border-radius: 50%;
+			}
 
+			.comments-input {
+			    margin-left: 56px;
+			    margin-top: -40px;
+			}
+
+			.comments-input input {
+			    width: 80%;
+			}
+
+			.commentators-image {
+			    height: 30px; 
+			    width: 30px; 
+			    border-radius: 50%;
+			}
+
+			.user-comments {
+			    margin-left: 30px;
+			}
 
 		}
 

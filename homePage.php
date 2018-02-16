@@ -92,10 +92,13 @@
         				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore porro repudiandae ducimus rem expedita sapiente, quae, atque iste quis beatae animi libero voluptatum sint doloribus voluptates maiores eligendi amet reprehenderit.</p>
             		</div>
         		</div>
+        		<button class="glyphicon glyphicon-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></button>
+        		<button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button>
+        		<button class="glyphicon glyphicon-trash btn btn-danger" type="button" title="Delete"></button>
 
 				<div class="row comments">
         		    <ul>
-        		        <li><a href="#"><i class="fas fa-2x fa-heart"></i></a></li>
+        		        <li><a href="#"><i class="fas fa-2x fa-heart" title="Like"></i></a></li>
         		    </ul><br>
         		    <div class="well">
         		        <img class="user-comment-image" src="images/templateImages/man.jpg" alt="">&nbsp;

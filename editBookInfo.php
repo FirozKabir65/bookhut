@@ -113,6 +113,12 @@
                                 <input type="file" name="bookImage" multiple accept="image/*">
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Previous Image:</label>
+                            <div class="col-sm-9">
+                                <img src="images/templateImages/1.jpg" name="bookImage" alt="" style="height: 50px; width: 50px;">
+                            </div>
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
