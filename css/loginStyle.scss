@@ -1,0 +1,112 @@
+$header: #4682B4;
+$background: #bdc3c7;
+$loginform: #ecf0f1;
+$footer: #2c3e50;
+
+
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background-image: url('../images/templateImages/bg.png');
+}
+
+body, img, h3 {
+	margin: 0;
+	padding: 0;
+	font-family: comic sans MS !important;
+}
+
+.wrapper {
+
+	.top-bar {
+		height: 100px;
+		
+		.header {
+			height: 100px;
+			background-color: $header;
+			margin-bottom: 0;
+			border: 0;
+			border-radius: 0;
+
+			img {
+				height: 100px;
+				width: 100px;
+			}
+		}
+	}
+
+}
+
+.content-body {
+	min-height: 100%;
+	margin-top: 30px;
+
+	.well {
+		border: 2px solid lightgray;
+		border-radius: 0;
+		background-color: $loginform;
+		margin: 0px 20px 20px;
+
+		.login-form {
+			padding: 12px 0px;
+
+			input {
+				border-radius: 0; 
+				height: 45px; 
+				font-size: 17px;
+				margin-bottom: 10px;
+			}
+
+			button {
+				border-radius: 0; 
+				height: 45px;
+				font-size: 17px;
+				margin-bottom: 10px;
+			}
+			input[type="checkbox"], input[type="radio"]{
+				margin: -11px -18px 0px;
+			}
+		}
+	}
+}
+
+.footer {
+	background-color: $footer; 
+	color: white !important;
+	padding: 15px 0px; 
+	margin-top: 20px;
+}
+
+.modal-header {
+	background-color: $header;
+	padding:25px 40px;
+	
+	h4, .close {
+    color:white !important;
+    text-align: center;
+    font-size: 25px;
+	}
+}
+
+.modal-body {
+	background-color: $loginform;
+	padding:40px 50px;
+
+	form {
+
+		input {
+			border-radius: 0;
+			border: none;
+			border-bottom: 2px solid $header;
+		}
+	}
+}
+
+.modal-footer {
+    background-color: $footer;
+}
+
+

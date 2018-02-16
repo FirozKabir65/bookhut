@@ -1,14 +1,3 @@
-<?php
-
-    require_once 'class/book.php';
-    $book = new Book();
-    $bookCategory = $book->book_category_info();
-    $bookInfo = "";
-
-    if(isset($_POST['btn'])){
-        $bookInfo = $book->save_book_info($_POST);
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +71,7 @@
             <div class="main-content col-md-offset-1 col-md-8">
                 <div class="row bookup-row">
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        <h3 class="text-center text-success"><?php echo $bookInfo ;?></h3>
+                        <h3 class="text-center text-success"><!-- <?php echo $bookInfo ;?> --></h3>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Select Book:</label>
                             <div class="col-sm-9">
@@ -127,7 +116,7 @@
                         
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-cloud-upload-alt"></i> Upload Book</button>
+                                <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-edit"></i> Edit Book Info</button>
                             </div>
                         </div>
                     </form>

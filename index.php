@@ -1,5 +1,4 @@
 <?php 
-
 	require_once 'class/login.php';
 	$message ="";
 	if(isset($_POST['btn'])){
@@ -26,78 +25,78 @@
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="loginStyle.css">
+	<link rel="stylesheet" href="css/loginStyle.css">
 	
 	
 	<title>Book Hut :: Share your books here</title>
 </head>
 <body>
 	<div class="container-fluid wrapper">
-		<div class="row">
+		<div class="row top-bar">
 			<nav class="navbar navbar-default header">
-			    <div class="container-fluid">
-				    <div class="navbar-header">
-				        <a class="navbar-brand" href="#">
-				        	<img alt="Brand" src="images/bhlogo.png" class="image-responsive">
-				        </a>
-				    </div>
-				</div>
+			  	<div class="container-fluid">
+			    	<div class="navbar-header">
+			      		<a class="navbar-brand" href=""><img src="images/bhlogo.png" alt="logo"></a>
+			    	</div>
+			  	</div>
 			</nav>
 		</div>
+	</div>
+
+	<div class="container content-body">
 		<div class="row">
-			<div class="content-body">
-				<div class="content">
-					<div class="well">
-						<form class="form-horizontal login-form" action="" method="post">
-							<h3 class="text-center text-success"><?php echo $message ;?></h3>
-							<br>
-							<h3 class="text-center">Log into BookHut</h3>
-							<br>
-						    <div class="form-group">
-							    <div class="col-md-offset-3 col-md-6">
-							        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required>
-							    </div>
+			<div class="col-md-12">
+				<div class="well">
+					<form class="form-horizontal login-form" action="" method="post">
+						<h3 class="text-center text-success"><?php echo $message ;?></h3>
+						<br>
+						<h3 class="text-center">Log into BookHut</h3>
+						<br>
+					    <div class="form-group">
+						    <div class="col-md-offset-3 col-md-6">
+						        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required>
 						    </div>
-						    <div class="form-group">
-							    <div class="col-md-offset-3 col-md-6">
-							        <input type="password" class="form-control" id="inputEmail3" placeholder="Password" name="password" required>
-							    </div>
+					    </div>
+					    <div class="form-group">
+						    <div class="col-md-offset-3 col-md-6">
+						        <input type="password" class="form-control" id="inputEmail3" placeholder="Password" name="password" required>
 						    </div>
-							<div class="form-group">
+					    </div>
+						<div class="form-group">
 							<div class="col-md-offset-3 col-md-6">
-							  <div class="checkbox">
-								<label>
-								  <input type="checkbox"> Remember me
-								</label>
-							  </div>
+							  	<div class="checkbox">
+									<label>
+								  		<input type="checkbox"> Remember me
+									</label>
+							  	</div>
 							</div>
-						  </div>
-						    <div class="form-group">
-							    <div class="col-md-offset-3 col-md-6">
-							        <button type="submit" class="btn btn-primary btn-block" name="loginBtn"><b>Log In</b></button>
-							    </div>
+					  	</div>
+					    <div class="form-group">
+						    <div class="col-md-offset-3 col-md-6">
+						        <button type="submit" class="btn btn-primary btn-block" name="loginBtn"><b>Log In</b></button>
 						    </div>
-							<p class="text-center"><b>---------------------------- or ----------------------------</b></p>
-							<br>
-						    <div class="form-group">
-							    <div class="col-md-offset-4 col-md-4">
-							         <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal"><b>Create New Account</b></button>
-							    </div>
+					    </div>
+						<p class="text-center"><b>----------------------- or -----------------------</b></p>
+						<br>
+					    <div class="form-group">
+						    <div class="col-md-offset-4 col-md-4">
+						        <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal"><b>Create New Account</b></button>
 						    </div>
-							<a href="#"><p class="text-center">Forgot account?</p></a>
-							
-						</form>
-					</div>
+					    </div>
+						<a href="#"><p class="text-center">Forgot account?</p></a>
+					</form>
 				</div>
-				<footer class="">
-					<p class="text-center">&copy; 2018 copyright by Lazy Warriors </p>
-				</footer>
 			</div>
 		</div>
 	</div>
 
-	<!-- Modal start-->
-	 
+	<div class="container-fluid">
+	    <div class="row">
+	        <div class="footer col-md-12">
+	            <p class="text-center">&copy; 2018 Book Hut. All Rights Reserved | By LazyWarriors</p>
+	        </div>
+	    </div>
+	</div>
 
 	<div class="modal fade" id="myModal" role="dialog">
 	    <div class="modal-dialog">
@@ -145,6 +144,8 @@
 		    </div>
 	    </div>
 	</div>
+
+
 	<script>
 		$(document).ready(function(){
 		    $("#myBtn").click(function(){
@@ -169,12 +170,12 @@
 	</script> 
 
 
-
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<script src="js/jquerylib.js"></script>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/wow.min.js"></script>
-	<script src="custom.js"></script>
+	<script src="js/custom.js"></script>
 	<script src="js/modernizr-custom.js"></script> 
 </body>
 </html>

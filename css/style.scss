@@ -9,13 +9,14 @@ html, body {
 }
 
 body {
-	background-image: url('images/templateImages/bg.png');
+	background-image: url('../images/templateImages/bg.png');
 }
 body, img, h3 {
 	margin: 0;
 	padding: 0;
 	font-family: comic sans MS !important;
 }
+
 .menu {
 	height:70px;
 }
@@ -104,17 +105,52 @@ body, img, h3 {
 					background-color: rgb(44, 62, 80);
 				}
 			}
-
 		}	
 	}
-	.main-content{
+
+	.main-content {
 		border: 2px solid lightgrey;
-		.row{
+
+		.bookup-row {
 			background-color: $loginform;
 			padding: 30px 30px 20px 20px;
 		}
+
+		.homepage-row {
+			background-color: $loginform;
+			padding: 20px 20px 20px 15px;
+
+			.post-user {
+				height: 80px;
+				width: 80px;
+			}
+		}
+
+		.homepage-book-row {
+			background-color: $loginform;
+			padding: 20px 20px 20px 15px;
+		}
+
+		.comments {
+			background-color: $loginform;
+			padding: 20px 20px 20px 15px;
+
+			li {
+				display: inline-block;
+				margin-top: 10px;
+				text-decoration: none;
+
+				.fa-2x {
+					font-size: 1.5em;
+				}
+			}
+
+
+		}
+
 	}
 }
+
 .footer {
 	background-color: $footer; 
 	color: white !important;
