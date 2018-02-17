@@ -50,23 +50,59 @@
 
 	<div class="container content-body">
 	    <div class="row">
-	        <div class="left-sidebar col-md-3">
-	           <div class="row">
-	              <div class="pro_pic">
-	                <a href="index.html"><img src="images/templateImages/man.jpg" title="pro_pic"></a>
-	                <h3>Bruce Wayne</h3>
-	              </div>
-	           </div>
-	           <div class="row">
+	        <!-- <div class="left-sidebar col-md-3">
+	           	<div class="row">
+	              	<div class="pro_pic">
+	                	<a href="index.html"><img src="images/templateImages/man.jpg" title="pro_pic"></a>
+	                	<h3>Bruce Wayne</h3>
+	              	</div>
+	           	</div>
+	           	<div class="row">
 	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 view-profile">
 	                    <button type="btn" class="btn btn-info">View Profile</button>
 	                </div>
-	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 edit-profile">
-	                    <button type="btn" class="btn btn-info">Edit Profile</button>
-	                </div>
-	           </div>
+	           	</div>
+	        </div> -->
+	        <div class="user-info col-md-offset-1 col-md-10">
+	        	<div class="row homepage-row">
+	        	    <div class="col-md-12" style="margin-bottom: 30px;">
+	        	    	<div class="media">
+	        	    		<div class="media-left">
+	        	    			<img class="user" src="images/templateImages/man.jpg" alt="user">
+	        	    		</div>
+	        	    		<div class="media-body">
+	        	    			<div class="media-heading">
+	        	    				<h3>Bruce Wayne</h3><br>
+	        	    				<h4>Profession : Data Scientist</h4>
+	        	    			</div>
+	        	    		</div>
+	        	    	</div>
+	        	    </div>
+					<hr>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-3"><h4>Favourite Books :</h4></div>
+						<div class="col-md-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-3"><h4>Favourite Writers :</h4></div>
+						<div class="col-md-8">Cumque, earum iure quas nesciunt temporibus doloremque, illo amet distinctio eligendi eaque!</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-3"><h4>Interests :</h4></div>
+						<div class="col-md-8">Reprehenderit deleniti esse natus qui tenetur sequi officia magnam aperiam!</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-md-offset-1 col-md-3"><h4>Address :</h4></div>
+						<div class="col-md-8">Reprehenderit deleniti esse natus qui tenetur sequi officia magnam aperiam!</div>
+					</div>
+					<hr>
+	        	</div>
 	        </div>
-	        <div class="main-content col-md-offset-1 col-md-8">
+
+	        <div class="main-content col-md-offset-1 col-md-10">
 	            <div class="row homepage-row">
 	                <div class="col-md-12">
 	                	<div class="media">

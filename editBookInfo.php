@@ -62,10 +62,9 @@
                     <div class="col-md-offset-3 col-md-6 col-md-offset-3 view-profile">
                         <button type="btn" class="btn btn-info">View Profile</button>
                     </div>
-
-                   <!-- <div class="view-profile">
-                       
-                   </div> -->
+                    <div class="col-md-offset-3 col-md-6 col-md-offset-3 edit-profile">
+                        <button type="btn" class="btn btn-info">Edit Profile</button>
+                    </div>
                </div>
             </div>
             <div class="main-content col-md-offset-1 col-md-8">

@@ -90,13 +90,26 @@ body, img, h3 {
 
 		.view-profile {
 			background: #fff;
-			// font-size: 0.8em;
-			// padding: 5px 0px;
-			padding-top: 50px;
-			padding-bottom: 50px;
+			padding-top: 40px;
+			padding-bottom: 10px;
 
 			button {
-				// margin: 20% 30%;
+				background-color: rgba(44, 62, 80, 0.9);
+				border: none;
+				padding: 8px 10px;
+
+				&:hover {
+					background-color: rgb(44, 62, 80);
+				}
+			}
+		}
+
+		.edit-profile {
+			background: #fff;
+			// padding-top: 40px;
+			padding-bottom: 40px;
+
+			button {
 				background-color: rgba(44, 62, 80, 0.9);
 				border: none;
 				padding: 8px 10px;
@@ -108,9 +121,10 @@ body, img, h3 {
 		}	
 	}
 
-	.main-content {
+	.main-content, .user-info {
 		border: 2px solid lightgrey;
 		background-color: $loginform;
+		margin-bottom: 20px;
 
 
 		.bookup-row {
@@ -121,6 +135,11 @@ body, img, h3 {
 		.homepage-row {
 			// background-color: $loginform;
 			padding: 20px 20px 20px 15px;
+
+			.user {
+				height: 150px;
+				width: 150px;
+			}
 
 			.post-user {
 				height: 80px;
@@ -173,6 +192,10 @@ body, img, h3 {
 			    margin-left: 30px;
 			}
 
+		}
+
+		hr {
+			border-top: 1px solid #2c3e50;
 		}
 
 	}

@@ -55,50 +55,65 @@ body, img, h3 {
         margin-top: 6px; }
     .content-body .left-sidebar .view-profile {
       background: #fff;
-      padding-top: 50px;
-      padding-bottom: 50px; }
+      padding-top: 40px;
+      padding-bottom: 10px; }
       .content-body .left-sidebar .view-profile button {
         background-color: rgba(44, 62, 80, 0.9);
         border: none;
         padding: 8px 10px; }
         .content-body .left-sidebar .view-profile button:hover {
           background-color: #2c3e50; }
-  .content-body .main-content {
+    .content-body .left-sidebar .edit-profile {
+      background: #fff;
+      padding-bottom: 40px; }
+      .content-body .left-sidebar .edit-profile button {
+        background-color: rgba(44, 62, 80, 0.9);
+        border: none;
+        padding: 8px 10px; }
+        .content-body .left-sidebar .edit-profile button:hover {
+          background-color: #2c3e50; }
+  .content-body .main-content, .content-body .user-info {
     border: 2px solid lightgrey;
-    background-color: rgba(255, 255, 255, 0.6); }
-    .content-body .main-content .bookup-row {
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20px; }
+    .content-body .main-content .bookup-row, .content-body .user-info .bookup-row {
       padding: 30px 30px 20px 20px; }
-    .content-body .main-content .homepage-row {
+    .content-body .main-content .homepage-row, .content-body .user-info .homepage-row {
       padding: 20px 20px 20px 15px; }
-      .content-body .main-content .homepage-row .post-user {
+      .content-body .main-content .homepage-row .user, .content-body .user-info .homepage-row .user {
+        height: 150px;
+        width: 150px; }
+      .content-body .main-content .homepage-row .post-user, .content-body .user-info .homepage-row .post-user {
         height: 80px;
         width: 80px; }
-    .content-body .main-content .homepage-book-row {
+    .content-body .main-content .homepage-book-row, .content-body .user-info .homepage-book-row {
       padding: 20px 20px 20px 15px; }
-    .content-body .main-content .comments {
+    .content-body .main-content .comments, .content-body .user-info .comments {
       padding: 20px 20px 20px 15px; }
-      .content-body .main-content .comments li {
+      .content-body .main-content .comments li, .content-body .user-info .comments li {
         display: inline-block;
         margin-top: 10px;
         text-decoration: none;
         list-style: none; }
-        .content-body .main-content .comments li .fa-2x {
+        .content-body .main-content .comments li .fa-2x, .content-body .user-info .comments li .fa-2x {
           font-size: 1.5em; }
-      .content-body .main-content .comments .user-comment-image {
+      .content-body .main-content .comments .user-comment-image, .content-body .user-info .comments .user-comment-image {
         height: 40px;
         width: 40px;
         border-radius: 50%; }
-      .content-body .main-content .comments .comments-input {
+      .content-body .main-content .comments .comments-input, .content-body .user-info .comments .comments-input {
         margin-left: 56px;
         margin-top: -40px; }
-      .content-body .main-content .comments .comments-input input {
+      .content-body .main-content .comments .comments-input input, .content-body .user-info .comments .comments-input input {
         width: 80%; }
-      .content-body .main-content .comments .commentators-image {
+      .content-body .main-content .comments .commentators-image, .content-body .user-info .comments .commentators-image {
         height: 30px;
         width: 30px;
         border-radius: 50%; }
-      .content-body .main-content .comments .user-comments {
+      .content-body .main-content .comments .user-comments, .content-body .user-info .comments .user-comments {
         margin-left: 30px; }
+    .content-body .main-content hr, .content-body .user-info hr {
+      border-top: 1px solid #2c3e50; }
 
 .footer {
   background-color: #2c3e50;

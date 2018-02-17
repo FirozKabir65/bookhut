@@ -100,7 +100,7 @@
                 
                 <div class="clear"> </div>
             </div>
-            <div class="clear"> </div>
+            <div class="clear"> </div> 
             <div class="pagination">
                 <li><a href="#">1</a></li>
                 <li class="active"><a href="#">2</a></li>

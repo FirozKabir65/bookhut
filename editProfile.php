@@ -1,14 +1,3 @@
-<?php
-
-    require_once 'class/book.php';
-    $book = new Book();
-    $bookCategory = $book->book_category_info();
-    $bookInfo = "";
-
-    if(isset($_POST['btn'])){
-        $bookInfo = $book->save_book_info($_POST);
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,52 +70,58 @@
             <div class="main-content col-md-offset-1 col-md-8">
                 <div class="row bookup-row">
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
-                        <h3 class="text-center text-success"><?php echo $bookInfo ;?></h3>
+                        <h3 class="text-center text-success"></h3>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Select Book:</label>
+                            <label class="col-sm-3 control-label">First Name:</label>
                             <div class="col-sm-9">
-                                <input type="file" name="bookPath" multiple accept="application/pdf">
+                                <input type="text" class="form-control" name="firstName">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Book Name:</label>
+                            <label class="col-sm-3 control-label">Last Name:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="bookName">
+                                <input type="text" class="form-control" name="lastName">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Book Category:</label>
+                            <label class="col-sm-3 control-label">Password:</label>
                             <div class="col-sm-9">
-                                <select class="form-control" name="bookCategoryId">
-                                    <option>---Select Book Category---</option>
-                                    <?php while($result=mysqli_fetch_assoc($bookCategory)){;?>
-                                    <option value="<?php echo $result['id'];?>"><?php echo $result['categoryName'];?></option>
-                                    <?php } ;?>
-                                </select>
+                                <input type="password" class="form-control" name="password">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Author Name:</label>
+                            <label class="col-sm-3 control-label">Favourite Books:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="bookAuthor">
+                                <input type="text" class="form-control" name="favouriteBooks">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Book Description:</label>
+                            <label class="col-sm-3 control-label">Favourite Writers:</label>
                             <div class="col-sm-9">
-                                <textarea name="bookDescription" class="form-control" rows="4"></textarea>
+                                <input type="text" class="form-control" name="favouriteWriters">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Select Book Image:</label>
+                            <label class="col-sm-3 control-label">Interests:</label>
                             <div class="col-sm-9">
-                                <input type="file" name="bookImage" multiple accept="image/*">
+                                <input type="text" class="form-control" name="interests">
                             </div>
                         </div>
-                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Address:</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="address">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Select Profile Image:</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="profileImage" multiple accept="image/*">
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-cloud-upload-alt"></i> Upload Book</button>
+                                <button type="submit" name="btn" class="btn btn-success btn-block"><i class="fas fa-edit"></i> Edit Profile Info</button>
                             </div>
                         </div>
                     </form>
