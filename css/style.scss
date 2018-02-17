@@ -1,6 +1,6 @@
 $header: #4682B4;
 $background: #bdc3c7;
-$loginform: #ecf0f1;
+$loginform: rgba(255, 255, 255, 0.6);
 $footer: #2c3e50;
 
 html, body {
@@ -22,7 +22,7 @@ body, img, h3 {
 }
 .header {
     height: 70px;
-    background-color: #4682B4;
+    background-color: $header;
     border: 0px;
 
     .navbar-toggle {
@@ -31,7 +31,7 @@ body, img, h3 {
 	}
 
 	.navbar-toggle:hover {
-		background-color: #4682B4;
+		background-color: $header;
 	}
 
 	.navbar-toggle:focus {
@@ -45,7 +45,7 @@ body, img, h3 {
 	}
 
 	.navbar-collapse {
-		border-color: #4682B4;
+		border-color: $header;
 	}
 	
 	.navbar-nav li a {
@@ -53,7 +53,7 @@ body, img, h3 {
 	    // padding-bottom: 20px;
 	    color: white !important;
 	    font-size: 25px;
-	    background-color: #4682B4;
+	    background-color: $header;
 	}
 
 }
@@ -74,7 +74,7 @@ body, img, h3 {
 		.pro_pic {
 			text-align: center;
 			padding: 24px 27px;
-			background: #4682B4;
+			background: $header;
 
 			img {
 				height: 150px; 
@@ -110,7 +110,7 @@ body, img, h3 {
 
 	.main-content {
 		border: 2px solid lightgrey;
-		background-color: rgba(255, 255, 255, 0.5);
+		background-color: $loginform;
 
 
 		.bookup-row {
