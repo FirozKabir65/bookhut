@@ -120,5 +120,18 @@ body, img, h3 {
   color: white !important;
   padding: 15px 0px;
   margin-top: 20px; }
+  .footer hr {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 0px; }
+  .footer ul li {
+    display: inline-block;
+    list-style: none;
+    padding-right: 20px; }
+    .footer ul li a {
+      text-decoration: none;
+      color: white !important; }
+    .footer ul li a:hover {
+      color: #31B0D5 !important; }
 
 /*# sourceMappingURL=style.css.map */

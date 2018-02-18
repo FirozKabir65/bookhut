@@ -206,4 +206,27 @@ body, img, h3 {
 	color: white !important;
 	padding: 15px 0px; 
 	margin-top: 20px;
+
+	hr {
+		margin-top: 0px;
+		margin-bottom: 15px;
+		padding: 0px;
+	}
+
+	ul li {
+		display: inline-block;
+		list-style: none;
+		padding-right: 20px;
+
+		a {
+		text-decoration: none;
+		color: white !important;
+		}
+
+		a:hover {
+			color: #31B0D5 !important; 
+		}
+	}
+
+
 }

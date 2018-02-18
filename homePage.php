@@ -129,12 +129,19 @@
     </div>
 
 
-    
-
-
     <div class="container-fluid">
         <div class="row">
             <div class="footer col-md-12">
+            	<ul class="text-center">
+            		<li>
+            			<a href="google.com">About Us</a>
+            		</li>
+            		<li>|</li>
+            		<li>
+            			<a href="faq.php">FAQ</a>
+            		</li>
+            	</ul>
+            	<hr>
                 <p class="text-center">&copy; 2018 Book Hut. All Rights Reserved | By LazyWarriors</p>
             </div>
         </div>
