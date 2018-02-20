@@ -1,6 +1,7 @@
 <?php
-
+    session_start();
     require_once 'class/book.php';
+    require_once 'class/login.php';
     $book = new Book();
     $bookCategory = $book->book_category_info();
     $bookInfo = "";
@@ -82,9 +83,11 @@
                 <div class="row bookup-row">
                     <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
                         <h3 class="text-center text-success"><?php echo $bookInfo ;?></h3>
+                        <input type="hidden" class="form-control" name="userId" value="<?php echo $_SESSION['userId'];?>">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Select Book:</label>
                             <div class="col-sm-9">
+
                                 <input type="file" name="bookPath" multiple accept="application/pdf">
                             </div>
                         </div>

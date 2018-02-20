@@ -46,8 +46,8 @@
 		
 			if($user_info){
 				session_start();
-				$_SESSION['userId'] = $user_info['userId'];
-				$_SESSION['userName'] = $user_info['userName'];
+				$_SESSION['userId'] = $user_info['id'];
+				$_SESSION['firstName'] = $user_info['firstName'];
 				header('Location: homePage.php');
 			}
 			else {
@@ -57,4 +57,17 @@
 
 		}
 
+		public function email_check($email){
+			// $email = $_POST['email'];
+			$sql = "SELECT * FROM tbl_user WHERE email='$email'";
+			$sql_result = mysqli_query($this->connection,$sql);
+
+			if($sql_result){
+				return $sql_result;
+			}
+
+			else {
+				die('Query problem');
+			}
+		}
 	}

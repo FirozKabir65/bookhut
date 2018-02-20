@@ -32,12 +32,13 @@
 
 			$bookPath=$this->save_book_pdf();
 			$bookImage=$this->save_book_image();
+			$userId = $data['userId'];
 			$bookName = $data['bookName'];
 			$bookCategoryId = $data['bookCategoryId'];
 			$bookAuthor = $data['bookAuthor'];
 			$bookDescription = $data['bookDescription'];
 
-			$sql = "INSERT INTO tbl_book (bookPath, bookName, bookCategoryId,bookAuthor, bookDescription,bookImage) VALUES ('$bookPath','$bookName','$bookCategoryId','$bookAuthor','$bookDescription','$bookImage')";
+			$sql = "INSERT INTO tbl_book (userId,bookPath, bookName, bookCategoryId,bookAuthor, bookDescription,bookImage) VALUES ('$userId','$bookPath','$bookName','$bookCategoryId','$bookAuthor','$bookDescription','$bookImage')";
 			$sql_result = mysqli_query($this->connection,$sql);
 
 			if($sql_result){
@@ -49,6 +50,62 @@
 			}
 
 			
+		}
+
+		public function edit_book_info($id){
+			$sql = "SELECT * FROM tbl_book where id = '$id'";
+			$sql_result = mysqli_query($this->connection,$sql);
+			$result = mysqli_fetch_assoc($sql_result);
+			if($result){
+				return $result;
+			}
+			else {
+				die('query problem');
+			}
+		}
+
+		public function update_book_if($data){
+			if($_FILES['bookImage']['name']){
+				$bookId = $data['id'];
+				$query_result = mysqli_query($this->connection,"SELECT bookImage FROM tbl_book WHERE id = '$bookId'");
+				$bookImage = mysqli_fetch_assoc($query_result);
+				unlink($bookImage['bookImage']);
+				$image_url=$this->save_book_image();
+				// $blog_id = $data['blog_id'];
+				$bookName = $data['bookName'];
+				$bookCategoryId = $data['bookCategoryId'];
+				$bookAuthor = $data['bookAuthor'];
+				$bookDescription = $data['bookDescription'];
+
+
+				$sql = "UPDATE tbl_book SET blog_id = '$blog_id', blog_title = '$blog_title', author_name = '$author_name', blog_description = '$blog_description', blog_image = '$image_url', publication_status = '$publication_status'WHERE blog_id  = '$blog_id'";
+				$sql_result = mysqli_query($this->connection,$sql);
+				if($sql_result){
+					header('Location: manageblog.php');
+				}
+
+				else {
+					die('query problem');
+				}
+			}
+			else {
+				$blog_id = $data['blog_id'];
+				$blog_title = $data['blog_title'];
+				$author_name = $data['author_name'];
+				$blog_description = $data['blog_description'];
+				$publication_status = $data['publication_status'];
+
+				$sql = "UPDATE tbl_blog SET blog_id = '$blog_id', blog_title = '$blog_title', author_name = '$author_name', blog_description = '$blog_description', publication_status = '$publication_status'WHERE blog_id  = '$blog_id'";
+				$sql_result = mysqli_query($this->connection,$sql);
+				if($sql_result){
+					header('Location: manageblog.php');
+				}
+
+				else {
+					die('query problem');
+				}
+			}
+
 		}
 
 		public function save_book_pdf(){

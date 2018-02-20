@@ -1,3 +1,12 @@
+<?php
+	session_start();
+	
+	require_once 'class/postStatus.php';
+	$status = new Status();
+	$status = $status->show_post();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,17 +75,21 @@
 	                </div>
 	           </div>
 	        </div>
+
 	        <div class="main-content col-md-offset-1 col-md-8">
+	        	<?php while($res=mysqli_fetch_assoc($status)){;?>
 	            <div class="row homepage-row">
+
 	                <div class="col-md-12">
 	                	<div class="media">
 	                		<div class="media-left">
+	                			
 	                			<img class="post-user" src="images/templateImages/man.jpg" alt="user">
 	                		</div>
 	                		<div class="media-body">
 	                			<div class="media-heading">
-	                				<h4>Bruce Wayne</h4><br>
-	                				<p>Posted on March 05 '13</p>
+	                				<h4><?php echo $res['firstName'];?></h4><br>
+	                				<p>Posted on <?php echo $res['created_at'];?></p>
 	                			</div>
 	                		</div>
 	                	</div>
@@ -84,16 +97,31 @@
 	            </div>
 
                 <div class="row homepage-book-row">
+                	<div class="col-md-12">
+                		<b>Book Name: <?php echo $res['bookName'];?></b>
+                		<p>Author Name: <?php echo $res['bookAuthor'];?></p>
+                		<br>
+                	</div>
                     <div class="col-md-5">
-            			<img class="img-responsive book-img" src="images/templateImages/1.jpg" alt="book-img">
+            			<img class="img-responsive book-img" src="<?php echo $res['bookImage'];?>" alt="book-img">
             		</div>
             		<div class="col-md-7">
-        				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore porro repudiandae ducimus rem expedita sapiente, quae, atque iste quis beatae animi libero voluptatum sint doloribus voluptates maiores eligendi amet reprehenderit.</p>
+        				<p><?php echo $res['bookDescription'];?></p>
             		</div>
         		</div>
-        		<button class="glyphicon glyphicon-cloud-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></button>
-        		<button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button>
-        		<button class="glyphicon glyphicon-trash btn btn-danger" type="button" title="Delete"></button>
+        		<input type="number" value="<?php echo $res['id'];?>">
+        		<input type="number" value="<?php echo $res['userId'];?>">
+
+        		
+
+        		<a href="<?php echo $res['bookPath'];?>" class="glyphicon glyphicon-cloud-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></a>
+
+        		<?php if($_SESSION['userId']== $res['userId']){?>
+
+        		<a href="editBookInfo.php?id=<?php echo $res['id'];?>" class="glyphicon glyphicon-edit btn btn-success" title="Edit"></a>
+
+        		<a href="" class="glyphicon glyphicon-trash btn btn-danger" title="Delete"></a>
+        		<?php };?>
 
 				<div class="row comments">
         		    <ul>
@@ -116,7 +144,7 @@
         		    </div>
         		</div>
         		<hr>
-
+        		<?php } ;?>
         		<div class="pagination">
         		    <li><a href="#">1</a></li>
         		    <li class="active"><a href="#">2</a></li>

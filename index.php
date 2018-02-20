@@ -54,12 +54,12 @@
 						<br>
 					    <div class="form-group">
 						    <div class="col-md-offset-3 col-md-6">
-						        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" name="email" required>
+						        <input type="email" class="form-control"  placeholder="Email" name="email" required>
 						    </div>
 					    </div>
 					    <div class="form-group">
 						    <div class="col-md-offset-3 col-md-6">
-						        <input type="password" class="form-control" id="inputEmail3" placeholder="Password" name="password" required>
+						        <input type="password" class="form-control"  placeholder="Password" name="password" required>
 						    </div>
 					    </div>
 						<div class="form-group">
@@ -116,15 +116,16 @@
 			              	<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
 			            </div>
 			            <div class="form-group">
-			              	<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+			              	<input type="email" class="form-control" id="email" name="email" placeholder="Email" required >
 			            </div>
+			            <p id = "result"></p>
 			            <div class="form-group">
 			              	<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
 			            </div>
 			            <div class="form-group">
 			              	<input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required onkeyup="validate()">
 			            </div>
-			            <p id="res1"></p>
+			            
 			            <p id="res"></p>
 			            
 			            <div class="form-group">
@@ -135,22 +136,34 @@
 			              	</select>
 			            </div>
 			            <br>
-			            <button type="submit" class="btn btn-success btn-block" name="btn"><span class="fa fa-user-plus"></span> Sign Up</button>
+			            <button type="submit" class="btn btn-success btn-block" name="btn" id="btn"><span class="fa fa-user-plus"></span> Sign Up</button>
 		          	</form>
 		        </div>
 		        <div class="modal-footer">
-		          	<button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+		          	<button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
 		        </div>
 		    </div>
 	    </div>
 	</div>
 
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	<script src="js/jquerylib.js"></script>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/modernizr-custom.js"></script> 
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> -->
 
 	<script>
-		$(document).ready(function(){
+		$(function(){
 		    $("#myBtn").click(function(){
 		        $("#myModal").modal();
+
 		    });
+		    
+		    
 		});
 
 		function validate() {
@@ -166,16 +179,43 @@
 				res.style.color = "red";
 				res.innerHTML = "Password did not match";		
 			};
-		}
-	</script> 
+		};
+		$(document).ready(function(){
+			$("#email").keyup(function(){
+				var email = $(this).val();
+				$.ajax({
+					url: 'class/email.php',
+					datatType : 'text',
+					method: 'POST',
+					data: {
+						email:email,
+					},
+					success:function(data)
+					{
+						var result = data;
+						var res = $("#result");
+						var btn = $("#btn");
 
 
-	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-	<script src="js/jquerylib.js"></script>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/modernizr-custom.js"></script> 
+						if (result == "Taken"){
+
+							res.css("color", "red");
+							res.html("Email already taken");
+							btn.prop('disabled',true);	
+						}
+						else{
+							res.css("color", "green");
+							res.html("Email address available");
+							btn.prop('disabled',false);
+						}
+
+					}
+				});
+				
+			});
+		});
+
+		
+	</script>
 </body>
 </html>
