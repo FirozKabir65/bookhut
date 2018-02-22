@@ -34,7 +34,7 @@
 	
 	<div class="container top-bar">
 	    <div class="row">
-	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 menu">
+	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  menu">
 	            <nav class="navbar navbar-inverse navbar-fixed-top header">
 	                <div class="container-fluid">
 	                    <!-- Brand and toggle get grouped for better mobile display -->
@@ -61,11 +61,11 @@
 	                    <!-- /.navbar-collapse -->
 	                </div>
 	                <!-- /.container-fluid -->
-					<div class="search-field" >
-						<form method="get" name="searchform" action="http://www.google.com/search" target="_blank">
-						    <input type="text" name="sitesearch" size="30" placeholder="Search books...">
-						    <input type="submit" class="btn btn-success" value="Search" title="Search">
-						</form>
+	                <div class="search-field" > 						
+	                	<form method="get" name="searchform" action="http://www.google.com/search" target="_blank"> 						    
+	                		<input type="text" name="sitesearch" size="30" placeholder="Search books..."> 
+						    <input type="submit" class="btn btn-success" value="Search" title="Search"> 		
+						</form> 					
 					</div>
 	            </nav>
 	        </div>
@@ -81,23 +81,18 @@
 	                <h3>Bruce Wayne</h3>
 	              </div>
 	           </div>
-	           <div class="row">
-	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 view-profile">
-	                    <a href="viewProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info">View Profile</button></a>
-	                </div>
-	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 edit-profile">
-	                   <a href="editProfile.php"><button type="btn" class="btn btn-info">Edit Profile</button></a> 
 	           <div class="row buttons text-center">
 	                <div class="view-profile">
-	                    <button type="btn" class="btn btn-info">View Profile</button>
+	                    <a href="viewProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info">View Profile</button></a>
 	                </div>
 	                <div class="edit-profile">
-	                    <button type="btn" class="btn btn-info">Edit Profile</button>
+	                   <a href="editProfile.php"><button type="btn" class="btn btn-info">Edit Profile</button></a> 
 	                </div>
 	           </div>
 	        </div>
 
 	        <div class="main-content col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-7 col-xs-7">
+	         	     
 	        	<?php while($res=mysqli_fetch_assoc($status)){;?>
 	            <div class="row homepage-row">
 
@@ -198,8 +193,8 @@
                 <p class="text-center">&copy; <?php echo date("Y"); ?> Book Hut. All Rights Reserved | By <i>Iffat, Firoz, Sabi.</i></p>
             </div>
         </div>
-    </div>        
-	
+    </div>          
+
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="js/jquerylib.js"></script>
@@ -209,14 +204,13 @@
     <script src="js/custom.js"></script>
     <script src="js/modernizr-custom.js"></script> 
 
-    <script>
-	    $(document).ready(function(){
-	        $(".search-field").hide();
-
-	        $("#search").click(function(){
-	            $(".search-field").slideToggle();
-	        });
-	    });
+    <script> 	    
+		$(document).ready(function(){
+		    $(".search-field").hide();
+		    $("#search").click(function(){ 	       
+		    	$(".search-field").slideToggle();
+		    }); 	    
+		});   
     </script>
 </body>
 
