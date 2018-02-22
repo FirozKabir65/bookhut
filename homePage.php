@@ -84,7 +84,7 @@ if(isset($_GET['status'])){
 					</div>
 				</div>
 				<input type="hidden" value="<?php echo $res['id'];?>">
-				<input type="hidden" value="<?php echo $res['bookUserId'];?>">
+				<input type="hidden" value="<?php echo $res['userId'];?>">
 
 
 
@@ -115,7 +115,7 @@ if(isset($_GET['status'])){
 						</span>
 
 						<?php
-						$showComment = $comment->show_comment($res['bookUserId']);
+						$showComment = $comment->show_comment($res['id']);
 						while($allComments = mysqli_fetch_assoc($showComment)){ 
 
 							?>
@@ -154,7 +154,7 @@ if(isset($_GET['status'])){
 
 		<!--Footer start-->
 		<?php include('includes/footer.php');?>
-		<!--Footer end-->
+		
 		
 	</body>
 
