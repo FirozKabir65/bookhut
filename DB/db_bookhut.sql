@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2018 at 07:02 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Feb 22, 2018 at 04:14 PM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -50,7 +48,8 @@ INSERT INTO `tbl_book` (`id`, `userId`, `bookPath`, `bookName`, `bookCategoryId`
 (2, 1, 'books/FERRISS_Timothy_-_The_4-Hour_Workweek.pdf', 'Test', 1, 'Demo', 'userIduserId userIduserIduserIduserId', 'images/bookImages/download (1).jpg', 1, '2018-02-18 15:19:48', '0000-00-00 00:00:00'),
 (3, 2, 'books/U1L9-Journal of Civil Engineering and Architecture - Issue 2 2013 - Interactive Teaching in In', 'demo', 1, 'Demos', 'userIduserIduserIduserIduserIduserIduserId', 'images/bookImages/images.jpg', 1, '2018-02-18 15:22:57', '0000-00-00 00:00:00'),
 (4, 2, 'books/45_Big-Data.pdf', 'Big data', 1, 'Batman', 'Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man  ', 'images/bookImages/images (1).jpg', 1, '2018-02-18 17:27:24', '0000-00-00 00:00:00'),
-(5, 1, 'books/Google DevFestâ€™17 Bangla invitation letter .pdf', 'DEv fest', 1, 'Dev Fest', 'Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest ', 'images/bookImages/background1.jpg', 1, '2018-02-21 18:06:51', '0000-00-00 00:00:00');
+(5, 1, 'books/Google DevFestâ€™17 Bangla invitation letter .pdf', 'DEv fest', 1, 'Dev Fest', 'Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest ', 'images/bookImages/background1.jpg', 1, '2018-02-21 18:06:51', '0000-00-00 00:00:00'),
+(6, 3, 'books/chart.pdf', 'Test Book', 1, 'Test AUthor', 'test book descriptions.', 'images/bookImages/rick_kelly.jpg', 1, '2018-02-22 15:01:27', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,7 +102,8 @@ INSERT INTO `tbl_comment` (`id`, `userId`, `bookId`, `comment`, `created_at`, `m
 (10, 1, 3, 'demo', '2018-02-22 05:23:56', '0000-00-00 00:00:00'),
 (11, 1, 2, 'helo', '2018-02-22 05:24:09', '0000-00-00 00:00:00'),
 (12, 2, 3, 'demo', '2018-02-22 05:25:54', '0000-00-00 00:00:00'),
-(13, 2, 2, 'helo helo', '2018-02-22 05:30:05', '0000-00-00 00:00:00');
+(13, 2, 2, 'helo helo', '2018-02-22 05:30:05', '0000-00-00 00:00:00'),
+(14, 3, 6, 'first comment for book information', '2018-02-22 15:03:48', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -126,7 +126,8 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`) VALUES
 (1, 'Iffta', 'Geergitee', 'test@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 1),
-(2, 'Demo', 'demo', 'demo@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 0);
+(2, 'Demo', 'demo', 'demo@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 0),
+(3, 'JObayer', 'Mojumder', 'jobayer.pro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0);
 
 -- --------------------------------------------------------
 
@@ -231,38 +232,32 @@ ALTER TABLE `tbl_user_profile`
 -- AUTO_INCREMENT for table `tbl_book`
 --
 ALTER TABLE `tbl_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tbl_book_category`
 --
 ALTER TABLE `tbl_book_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_user_image`
 --
 ALTER TABLE `tbl_user_image`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `tbl_user_profile`
 --
 ALTER TABLE `tbl_user_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- Constraints for dumped tables
 --
@@ -292,7 +287,6 @@ ALTER TABLE `tbl_user_image`
 --
 ALTER TABLE `tbl_user_profile`
   ADD CONSTRAINT `tbl_user_profile_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `tbl_user` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
