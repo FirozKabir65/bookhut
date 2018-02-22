@@ -20,6 +20,7 @@ body, img, h3 {
 .menu {
 	height:70px;
 }
+
 .header {
     height: 70px;
     background-color: $header;
@@ -31,7 +32,7 @@ body, img, h3 {
 	}
 
 	.navbar-toggle:hover {
-		background-color: $header;
+		background-color: $footer !important;
 	}
 
 	.navbar-toggle:focus {
@@ -44,16 +45,41 @@ body, img, h3 {
 	   	margin-top: -32px;
 	}
 
+	.navbar-brand img:hover {
+		// background-color: red !important;
+	}
+
 	.navbar-collapse {
 		border-color: $header;
 	}
 	
 	.navbar-nav li a {
 	    padding-top: 20px;
-	    // padding-bottom: 20px;
+	    padding-bottom: 20px;
 	    color: white !important;
-	    font-size: 25px;
+	    font-size: 30px;
 	    background-color: $header;
+	}
+
+	.navbar-nav li a:hover {
+		background-color: $footer !important;
+	}
+
+	.search-field {
+		position: absolute;
+		top: 17px;
+		right: 125px;
+		z-index: 1000;
+		// padding-top: 20px;
+		// padding-bottom: 20px;
+			
+		form {
+			border: 2px solid $footer;
+
+			input {
+				padding: 7px;
+			}
+		}
 	}
 
 }
@@ -227,6 +253,32 @@ body, img, h3 {
 			color: #31B0D5 !important; 
 		}
 	}
+}
 
 
+
+@media screen and (max-width: 450px) {
+	[class*='col-'] {
+		width: 100%;
+	}
+
+	.header {
+		.search-field {
+			position: absolute;
+			top: 50px;
+			right: 50px;
+			z-index: 1000;
+			// padding-top: 20px;
+			// padding-bottom: 20px;
+				
+			form {
+				border: 2px solid $footer;
+
+				input {
+					padding: 7px;
+				}
+			}
+		}
+	}
+	
 }

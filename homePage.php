@@ -34,7 +34,7 @@
 	
 	<div class="container top-bar">
 	    <div class="row">
-	        <div class="col-md-12 menu">
+	        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 menu">
 	            <nav class="navbar navbar-inverse navbar-fixed-top header">
 	                <div class="container-fluid">
 	                    <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,13 +54,19 @@
 	                            <li><a href="category_news.php"><i class="fab fa-facebook-messenger" title="MSG"></i></a></li>
 	                            <li><a href="#"><i class="fas fa-bell" title="NotiFication"></i></a></li>
 	                            <li><a href="bookupload.php"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>
-	                            <li><a href="#"><i class="fas fa-search" title="Search"></i></a></li>
+	                            <li id="search"><a><i class="fas fa-search" title="Search"></i></a></li>
 	                            <li><a href="#"><i class="fas fa-sign-out-alt" title="LogOut"></i></a></li>
 	                        </ul>
 	                    </div>
 	                    <!-- /.navbar-collapse -->
 	                </div>
 	                <!-- /.container-fluid -->
+					<div class="search-field" >
+						<form method="get" name="searchform" action="http://www.google.com/search" target="_blank">
+						    <input type="text" name="sitesearch" size="30" placeholder="Search books...">
+						    <input type="submit" class="btn btn-success" value="Search" title="Search">
+						</form>
+					</div>
 	            </nav>
 	        </div>
 	    </div>
@@ -68,7 +74,7 @@
 
 	<div class="container content-body">
 	    <div class="row">
-	        <div class="left-sidebar col-md-3">
+	        <div class="left-sidebar col-lg-3 col-md-3 col-sm-4 col-xs-5">
 	           <div class="row">
 	              <div class="pro_pic">
 	                <a href="index.html"><img src="images/templateImages/man.jpg" title="pro_pic"></a>
@@ -81,11 +87,17 @@
 	                </div>
 	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 edit-profile">
 	                   <a href="editProfile.php"><button type="btn" class="btn btn-info">Edit Profile</button></a> 
+	           <div class="row buttons text-center">
+	                <div class="view-profile">
+	                    <button type="btn" class="btn btn-info">View Profile</button>
+	                </div>
+	                <div class="edit-profile">
+	                    <button type="btn" class="btn btn-info">Edit Profile</button>
 	                </div>
 	           </div>
 	        </div>
 
-	        <div class="main-content col-md-offset-1 col-md-8">
+	        <div class="main-content col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-7 col-xs-7">
 	        	<?php while($res=mysqli_fetch_assoc($status)){;?>
 	            <div class="row homepage-row">
 
@@ -111,15 +123,15 @@
                 		<p>Author Name: <?php echo $res['bookAuthor'];?></p>
                 		<br>
                 	</div>
-                    <div class="col-md-5">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
             			<img class="img-responsive book-img" src="<?php echo $res['bookImage'];?>" alt="book-img">
             		</div>
-            		<div class="col-md-7">
+            		<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
         				<p><?php echo $res['bookDescription'];?></p>
             		</div>
         		</div>
-        		<input type="number" value="<?php echo $res['id'];?>">
-        		<input type="number" value="<?php echo $res['userId'];?>">
+        		<input type="hidden" value="<?php echo $res['id'];?>">
+        		<input type="hidden" value="<?php echo $res['userId'];?>">
 
         		
 
@@ -179,15 +191,15 @@
             		</li>
             		<li>|</li>
             		<li>
-            			<a href="faq.php">FAQ</a>
+            			<a href="faq.php">FAQs</a>
             		</li>
             	</ul>
             	<hr>
-                <p class="text-center">&copy; 2018 Book Hut. All Rights Reserved | By LazyWarriors</p>
+                <p class="text-center">&copy; <?php echo date("Y"); ?> Book Hut. All Rights Reserved | By <i>Iffat, Firoz, Sabi.</i></p>
             </div>
         </div>
-    </div>          
-
+    </div>        
+	
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="js/jquerylib.js"></script>
@@ -196,6 +208,16 @@
     <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/modernizr-custom.js"></script> 
+
+    <script>
+	    $(document).ready(function(){
+	        $(".search-field").hide();
+
+	        $("#search").click(function(){
+	            $(".search-field").slideToggle();
+	        });
+	    });
+    </script>
 </body>
 
 </html>
