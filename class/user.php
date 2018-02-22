@@ -1,5 +1,6 @@
 <?php
-
+	
+	
 	class UserProfile {
 
 		protected $connection;
@@ -52,9 +53,17 @@
 			// }
 			$profileImage = $this->save_profile_image();
 
-			$sql_image = "INSERT INTO tbl_user_image (userId,profileImage) VALUES('$id','$profileImage')";
+			// $sql_image = "INSERT INTO tbl_user_image (userId,profileImage) VALUES('$id','$profileImage')";
+
+			// $sql_result2 = mysqli_query($this->connection,$sql_image);
+
+			$sql_image = "UPDATE tbl_user_image SET profileImage='$profileImage' WHERE userId='$id'";
 
 			$sql_result2 = mysqli_query($this->connection,$sql_image);
+
+			// UPDATE Customers
+			// SET ContactName='Alfred Schmidt', City='Frankfurt'
+			// WHERE CustomerID=1;
 			
 			// if($sql_result2){
 			// 	return $sql_result2;
@@ -113,6 +122,24 @@
 			}
 			else {
 				die('Upload a valid image file');
+			}
+		}
+
+		public function user_image(){
+			// session_start();
+			$res = $_SESSION['userId'];
+			$sql = "SELECT * FROM tbl_user_image WHERE userId = '$res'";
+			$sql_result = mysqli_query($this->connection,$sql);
+			$user_img = mysqli_fetch_assoc($sql_result);
+			
+			if($user_img){
+
+				$res = $_SESSION['profileImage'] = $user_img['profileImage'];
+				return $res;
+			}
+			else {
+				$res = 'images/userImages/default_user_img.jpg';
+				return $res;
 			}
 		}
 	}

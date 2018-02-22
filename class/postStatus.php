@@ -15,23 +15,14 @@
 			 }
 		}
 
-		// public function show_post(){
-			
-		// 	$sql = "SELECT b.id, b.userId, u.firstName, u.lastName, b.created_at, b.bookAuthor, b.bookName, b.bookImage, b.bookDescription, b.bookPath FROM tbl_book b JOIN tbl_user u ON b.userId = u.id";
-
-		// 	$sql_result = mysqli_query($this->connection,$sql);
-			
-		// 	if($sql_result){
-		// 		return $sql_result;
-		// 	}
-		// 	else {
-		// 		die('query problem');
-		// 	}
-		// }
-
-		public function show_post(){
-			
-			$sql = "SELECT b.id, b.userId, u.firstName, u.lastName, b.created_at, b.bookAuthor, b.bookName, b.bookImage, b.bookDescription, b.bookPath, c.bookId, c.comment FROM tbl_book b JOIN tbl_user u ON b.userId = u.id JOIN tbl_comment c ON c.bookId = b.id";
+		public function show_post($page){
+			if($page=="" || $page == 1){
+				$page = 0;
+			}
+			else{
+				$page = (($page * 5) - 5);
+			}
+			$sql = "SELECT b.id, b.userId, u.firstName, u.lastName, b.created_at, b.bookAuthor, b.bookName, b.bookImage, b.bookDescription, b.bookPath FROM tbl_book b JOIN tbl_user u ON b.userId = u.id LIMIT $page, 5";
 
 			$sql_result = mysqli_query($this->connection,$sql);
 			
@@ -53,6 +44,19 @@
 				return $sql_result;
 			}
 			else {
+				die('query problem');
+			}
+		}
+
+		public function pagination(){
+			$run = "SELECT * FROM tbl_book";
+			$sql_result = mysqli_query($this->connection,$run);
+			$count = mysqli_num_rows($sql_result);
+			$a = ceil($count/5);
+			if($a){
+				return $a;
+			}
+			else{
 				die('query problem');
 			}
 		}

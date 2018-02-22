@@ -46,7 +46,7 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="homePage.html"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
+                                <li><a href="homePage.php"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
                                 <li><a href="category_news.php"><i class="fab fa-facebook-messenger" title="MSG"></i></a></li>
                                 <li><a href="#"><i class="fas fa-bell" title="NotiFication"></i></a></li>
                                 <li><a href="bookupload.php"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>

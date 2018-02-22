@@ -17,7 +17,7 @@
 		}
 
 		public function save_user_info($data){
-			$firstName = $data['firstName'];
+			$firstName = mysqli_real_escape_string($data['firstName']) ;
 			$lastName = $data['lastName'];
 			$email = $data['email'];
 			$password = md5($data['password']);
@@ -71,5 +71,13 @@
 			else {
 				die('Query problem');
 			}
+		}
+
+		public function user_logout(){
+			unset($_SESSION['userId']);
+			unset($_SESSION['firstName']);
+			unset($_SESSION['lastName']);
+			session_destroy();
+			header('Location: index.php');
 		}
 	}

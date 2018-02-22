@@ -1,10 +1,22 @@
 <?php
 	session_start();
-	
+	require_once 'class/user.php';
 	require_once 'class/postStatus.php';
 	require_once 'class/comment.php';
+
+	if(isset($_GET['logout'])){
+		require_once 'class/login.php';
+		$registration = new Registration();
+		$registration->user_logout();
+	}
+
+	$userProfile = new UserProfile();
+	$img = $userProfile->user_image();
+
 	$status = new Status();
-	$status = $status->show_post();
+	$page = $_GET['page'];
+	$post = $status->show_post($page);
+	$paginate = $status->pagination();
 	$comment = new Comment();
 
 	$showComment = $comment->show_comment();
@@ -50,12 +62,12 @@
 	                    <!-- Collect the nav links, forms, and other content for toggling -->
 	                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                        <ul class="nav navbar-nav navbar-right">
-	                            <li><a href="homePage.html"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
+	                            <li><a href="homePage.php"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
 	                            <li><a href="category_news.php"><i class="fab fa-facebook-messenger" title="MSG"></i></a></li>
 	                            <li><a href="#"><i class="fas fa-bell" title="NotiFication"></i></a></li>
 	                            <li><a href="bookupload.php"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>
 	                            <li id="search"><a><i class="fas fa-search" title="Search"></i></a></li>
-	                            <li><a href="#"><i class="fas fa-sign-out-alt" title="LogOut"></i></a></li>
+	                            <li><a href="?logout=logout"><i class="fas fa-sign-out-alt" title="LogOut"></i></a></li>
 	                        </ul>
 	                    </div>
 	                    <!-- /.navbar-collapse -->
@@ -77,8 +89,9 @@
 	        <div class="left-sidebar col-lg-3 col-md-3 col-sm-4 col-xs-5">
 	           <div class="row">
 	              <div class="pro_pic">
-	                <a href="index.html"><img src="images/templateImages/man.jpg" title="pro_pic"></a>
-	                <h3>Bruce Wayne</h3>
+	              	
+	                <a href="index.html"><img src="<?php echo $img ;?>" title="pro_pic"></a>
+	                <h3><?php echo $_SESSION['name']?></h3>
 	              </div>
 	           </div>
 	           <div class="row buttons text-center">
@@ -93,7 +106,7 @@
 
 	        <div class="main-content col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-7 col-xs-7">
 	         	     
-	        	<?php while($res=mysqli_fetch_assoc($status)){;?>
+	        	<?php while($res=mysqli_fetch_assoc($post)){;?>
 	            <div class="row homepage-row">
 
 	                <div class="col-md-12">
@@ -104,7 +117,7 @@
 	                		</div>
 	                		<div class="media-body">
 	                			<div class="media-heading">
-	                				<h4><?php echo $res['firstName'];?></h4><br>
+	                				<h4><?php echo $res['firstName'].' '.$res['lastName'];?></h4><br>
 	                				<p>Posted on <?php echo $res['created_at'];?></p>
 	                			</div>
 	                		</div>
@@ -144,7 +157,7 @@
         		        <li><a href="#"><i class="fas fa-2x fa-heart" title="Like"></i></a></li>
         		    </ul><br>
         		    <div class="well">
-        		        <img class="user-comment-image" src="images/templateImages/man.jpg" alt="">&nbsp;
+        		        <img class="user-comment-image" src="<?php echo $img ;?>" alt="">&nbsp;
         		        <span>
         		            <form class="form-group comments-input" method="post" action="">
         		            	<input type="number" name="bookId" value="<?php echo $res['id'];?>">
@@ -166,11 +179,11 @@
         		<hr>
         		<?php } ;?>
         		<div class="pagination">
-        		    <li><a href="#">1</a></li>
-        		    <li class="active"><a href="#">2</a></li>
-        		    <li><a href="#">3</a></li>
-        		    <li><a><span>....</span></a></li>
-        		    <div class="clear"> </div>
+        			<?php 
+        				for($i=1; $i<=$paginate; $i++){
+							print("<li><a href=?page=".$i."> ".$i." </a></li>");
+						}
+        			?>
         		</div>
             </div>
         </div>
