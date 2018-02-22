@@ -48,6 +48,8 @@
 				session_start();
 				$_SESSION['userId'] = $user_info['id'];
 				$_SESSION['firstName'] = $user_info['firstName'];
+				$_SESSION['lastName'] = $user_info['lastName'];
+				$_SESSION['name'] = $_SESSION['firstName'].' '.$_SESSION['lastName'];
 				header('Location: homePage.php');
 			}
 			else {

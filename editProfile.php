@@ -1,3 +1,16 @@
+<?php
+    session_start();
+    $userId = $_SESSION['userId'];
+    
+
+    require_once 'class/user.php';
+    // require_once 'class/login.php';
+    $userProfile = new UserProfile();
+
+    if(isset($_POST['btn'])){
+        $profile = $userProfile->store_user_profile($_POST);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,6 +88,7 @@
                             <label class="col-sm-3 control-label">First Name:</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" name="firstName">
+                                <input type="text" class="form-control" name="id" value="<?php echo $userId ;?>" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -84,9 +98,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Password:</label>
+                            <label class="col-sm-3 control-label">Profession:</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" name="password">
+                                <input type="text" class="form-control" name="profession">
                             </div>
                         </div>
                         <div class="form-group">

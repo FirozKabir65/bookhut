@@ -1,3 +1,20 @@
+<?php
+	session_start();
+	$id = $_GET['id'];
+	require_once 'class/user.php';
+	require_once 'class/postStatus.php';
+	$status = new Status();
+
+	$userProfile = new UserProfile();
+	if(isset($id)){
+	    $profileInfo = $userProfile->show_user_profile($id);
+	    $status = $status->show_post_by_id($id);
+	}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,8 +89,8 @@
 	        	    		</div>
 	        	    		<div class="media-body">
 	        	    			<div class="media-heading">
-	        	    				<h3>Bruce Wayne</h3><br>
-	        	    				<h4>Profession : Data Scientist</h4>
+	        	    				<h3><?php echo $_SESSION['name'];?></h3><br>
+	        	    				<h4>Profession : <?php echo $profileInfo['profession']?></h4>
 	        	    			</div>
 	        	    		</div>
 	        	    	</div>
@@ -81,28 +98,29 @@
 					<hr>
 					<div class="row">
 						<div class="col-md-offset-1 col-md-3"><h4>Favourite Books :</h4></div>
-						<div class="col-md-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
+						<div class="col-md-8"><?php echo $profileInfo['favouriteBooks'];?></div>
 					</div>
 					<hr>
 					<div class="row">
 						<div class="col-md-offset-1 col-md-3"><h4>Favourite Writers :</h4></div>
-						<div class="col-md-8">Cumque, earum iure quas nesciunt temporibus doloremque, illo amet distinctio eligendi eaque!</div>
+						<div class="col-md-8"><?php echo $profileInfo['favouriteWriters'];?></div>
 					</div>
 					<hr>
 					<div class="row">
 						<div class="col-md-offset-1 col-md-3"><h4>Interests :</h4></div>
-						<div class="col-md-8">Reprehenderit deleniti esse natus qui tenetur sequi officia magnam aperiam!</div>
+						<div class="col-md-8"><?php echo $profileInfo['interests'];?></div>
 					</div>
 					<hr>
 					<div class="row">
 						<div class="col-md-offset-1 col-md-3"><h4>Address :</h4></div>
-						<div class="col-md-8">Reprehenderit deleniti esse natus qui tenetur sequi officia magnam aperiam!</div>
+						<div class="col-md-8"><?php echo $profileInfo['address'];?></div>
 					</div>
 					<hr>
 	        	</div>
 	        </div>
 
 	        <div class="main-content col-md-offset-1 col-md-10">
+	        	<?php while($result=mysqli_fetch_assoc($status)){?>
 	            <div class="row homepage-row">
 	                <div class="col-md-12">
 	                	<div class="media">
@@ -111,8 +129,8 @@
 	                		</div>
 	                		<div class="media-body">
 	                			<div class="media-heading">
-	                				<h4>Bruce Wayne</h4><br>
-	                				<p>Posted on March 05 '13</p>
+	                				<h4><?php echo $_SESSION['name'];?></h4><br>
+	                				<p>Posted on <?php echo $result['created_at'];?></p>
 	                			</div>
 	                		</div>
 	                	</div>
@@ -120,14 +138,19 @@
 	            </div>
 
                 <div class="row homepage-book-row">
+                	<div class="col-md-12">
+                		<b>Book Name: <?php echo $result['bookName'];?></b>
+                		<p>Author Name: <?php echo $result['bookAuthor'];?></p>
+                		<br>
+                	</div>
                     <div class="col-md-5">
-            			<img class="img-responsive book-img" src="images/templateImages/1.jpg" alt="book-img">
+            			<img class="img-responsive book-img" src="<?php echo $result['bookImage'];?>" alt="book-img">
             		</div>
             		<div class="col-md-7">
-        				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore porro repudiandae ducimus rem expedita sapiente, quae, atque iste quis beatae animi libero voluptatum sint doloribus voluptates maiores eligendi amet reprehenderit.</p>
+        				<p><?php echo $result['bookDescription'];?></p>
             		</div>
         		</div>
-        		<button class="glyphicon glyphicon-cloud-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></button>
+        		<a href="<?php echo $result['bookPath'];?>" download><button class="glyphicon glyphicon-cloud-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></button></a>
         		<button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button>
         		<button class="glyphicon glyphicon-trash btn btn-danger" type="button" title="Delete"></button>
 
@@ -152,6 +175,7 @@
         		    </div>
         		</div>
         		<hr>
+        		<?php };?>
 
         		<div class="pagination">
         		    <li><a href="#">1</a></li>

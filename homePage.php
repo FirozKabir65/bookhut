@@ -2,8 +2,17 @@
 	session_start();
 	
 	require_once 'class/postStatus.php';
+	require_once 'class/comment.php';
 	$status = new Status();
 	$status = $status->show_post();
+	$comment = new Comment();
+
+	$showComment = $comment->show_comment();
+	
+	if(isset($_POST['btn'])){
+		$storeComment = $comment->store_comment($_POST);
+	}
+	
 
 ?>
 
@@ -68,10 +77,10 @@
 	           </div>
 	           <div class="row">
 	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 view-profile">
-	                    <button type="btn" class="btn btn-info">View Profile</button>
+	                    <a href="viewProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info">View Profile</button></a>
 	                </div>
 	                <div class="col-md-offset-3 col-md-6 col-md-offset-3 edit-profile">
-	                    <button type="btn" class="btn btn-info">Edit Profile</button>
+	                   <a href="editProfile.php"><button type="btn" class="btn btn-info">Edit Profile</button></a> 
 	                </div>
 	           </div>
 	        </div>
@@ -130,17 +139,21 @@
         		    <div class="well">
         		        <img class="user-comment-image" src="images/templateImages/man.jpg" alt="">&nbsp;
         		        <span>
-        		            <form class="form-group comments-input">
-    		                    <textarea name="commnet" id="" cols="60" rows="3" placeholder="Add a comment..." class="form-control"></textarea>
-	        		            <button class="glyphicon glyphicon-send btn btn-info" type="button" title="Submit" ></button>
+        		            <form class="form-group comments-input" method="post" action="">
+        		            	<input type="number" name="bookId" value="<?php echo $res['id'];?>">
+        		            	<input type="number" name="userId" value="<?php echo $_SESSION['userId']?>">
+    		                    <textarea name="comment" id="" cols="60" rows="3" placeholder="Add a comment..." class="form-control"></textarea>
+	        		            <button class="glyphicon glyphicon-send btn btn-info" type="submit" title="Submit" name="btn"></button>
         		            </form>
         		        </span>
         		        
         		        
-        		        <img class="commentators-image" src="images/templateImages/man.jpg" alt="">&nbsp; <span><b>user-name</b></span><br>
-        		        <small class="user-comments">comments</small><br><br>
+        		        <img class="commentators-image" src="<?php echo $r['profileImage'];?>" alt="">&nbsp; <span><b><?php echo $res['firstName'].' '.$res['lastName'];?></b></span><br>
+        		        <small class="user-comments"><?php echo $res['comment'];?></small><br><br>
         		        <a href="" class="btn btn-success">Edit</a>
         		        <a href="" class="btn btn-danger">Delete</a>
+        		        <br><br>
+        		        
         		    </div>
         		</div>
         		<hr>
