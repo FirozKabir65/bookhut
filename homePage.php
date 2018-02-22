@@ -4,11 +4,11 @@ require_once ('class/user.php');
 require_once ('class/postStatus.php');
 require_once ('class/comment.php');
 
-if(isset($_GET['logout'])){
-	require_once ('class/login.php');
-	$registration = new Registration();
-	$registration->user_logout();
-}
+// if(isset($_GET['logout'])){
+// 	require_once ('class/login.php');
+// 	$registration = new Registration();
+// 	$registration->user_logout();
+// }
 
 $userProfile = new UserProfile();
 $img = $userProfile->user_image();
@@ -27,84 +27,22 @@ if(isset($_POST['btn'])){
 	$storeComment = $comment->store_comment($_POST);
 }
 
+if(isset($_GET['status'])){
+	$id = ($_GET['id']);
+	$delete = $comment->delete($id);
+}
+
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	
-	
-	<title>Book Hut :: Share your books here</title>
-</head>
-<body>
-	
-	<div class="container top-bar">
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  menu">
-				<nav class="navbar navbar-inverse navbar-fixed-top header">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="background-color: #4682B4;">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="homePage.html"><img src="images/bhlogo.png" alt="BookHut" class="image-responsive"></a>
-						</div>
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav navbar-right">
-								<li><a href="homePage.php"><i class="fas fa-home" title="Home"></i><span class="sr-only">(current)</span></a></li>
-								<li><a href="category_news.php"><i class="fab fa-facebook-messenger" title="MSG"></i></a></li>
-								<li><a href="#"><i class="fas fa-bell" title="NotiFication"></i></a></li>
-								<li><a href="bookupload.php"><i class="fas fa-cloud-upload-alt" title="BookUp"></i></a></li>
-								<li id="search"><a><i class="fas fa-search" title="Search"></i></a></li>
-								<li><a href="?logout=logout"><i class="fas fa-sign-out-alt" title="LogOut"></i></a></li>
-							</ul>
-						</div>
-						<!-- /.navbar-collapse -->
-					</div>
-					<!-- /.container-fluid -->
-					<div class="search-field" > 						
-						<form method="get" name="searchform" action="http://www.google.com/search" target="_blank"> 						    
-							<input type="text" name="sitesearch" size="30" placeholder="Search books..."> 
-							<input type="submit" class="btn btn-success" value="Search" title="Search"> 		
-						</form> 					
-					</div>
-				</nav>
-			</div>
-		</div>
-	</div>
+<!--Header start-->
+<?php include('includes/header.php');?>
+<!--Header end-->
 
 	<div class="container content-body">
 		<div class="row">
-			<div class="left-sidebar col-lg-3 col-md-3 col-sm-4 col-xs-5">
-				<div class="row">
-					<div class="pro_pic">
-
-						<a href="index.html"><img src="<?php echo $img ;?>" title="pro_pic"></a>
-						<h3><?php echo $_SESSION['name']?></h3>
-					</div>
-				</div>
-				<div class="row buttons text-center">
-					<div class="view-profile">
-						<a href="viewProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info">View Profile</button></a>
-					</div>
-					<div class="edit-profile">
-						<a href="editProfile.php"><button type="btn" class="btn btn-info">Edit Profile</button></a> 
-					</div>
-				</div>
-			</div>
+			<!-- sidebar start -->
+			<?php include('includes/sideBar.php');?>
+			<!-- sidebar end -->
 
 			<div class="main-content col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-7 col-xs-7">
 
@@ -146,7 +84,7 @@ if(isset($_POST['btn'])){
 					</div>
 				</div>
 				<input type="hidden" value="<?php echo $res['id'];?>">
-				<input type="hidden" value="<?php echo $res['userId'];?>">
+				<input type="hidden" value="<?php echo $res['bookUserId'];?>">
 
 
 
@@ -177,17 +115,22 @@ if(isset($_POST['btn'])){
 						</span>
 
 						<?php
-						$showComment = $comment->show_comment($res['id']);
+						$showComment = $comment->show_comment($res['bookUserId']);
 						while($allComments = mysqli_fetch_assoc($showComment)){ 
+
 							?>
+							
 							<img class="commentators-image" src="<?php if(isset($allComments['profileImage'])){ echo $allComments['profileImage']; }else{ echo 'images/userImages/default_user_img.jpg';}?>" alt="">&nbsp; <span><b><?php echo $allComments['firstName'].' '.$allComments['lastName'];?></b></span><br>
 							<small class="user-comments"><?php if(isset($allComments['comment'])){
 								echo $allComments['comment'];
 							}?></small><br><br>
+
 							<?php if ($_SESSION['userId']== $allComments['id']) { ?>
+							<input type="hidden" value="<?php echo $allComments['commentId']?>">
+
 							<a href="" class="btn btn-success">Edit</a>
-							<a href="" class="btn btn-danger">Delete</a>
-							<br>
+							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger">Delete</a>
+							<br><br>
 							<?php } ?>
 							<?php } ?>
 						</div>
@@ -209,41 +152,10 @@ if(isset($_POST['btn'])){
 		</div>
 
 
-		<div class="container-fluid">
-			<div class="row">
-				<div class="footer col-md-12">
-					<ul class="text-center">
-						<li>
-							<a href="google.com">About Us</a>
-						</li>
-						<li>|</li>
-						<li>
-							<a href="faq.php">FAQs</a>
-						</li>
-					</ul>
-					<hr>
-					<p class="text-center">&copy; <?php echo date("Y"); ?> Book Hut. All Rights Reserved | By <i>Iffat, Firoz, Sabi.</i></p>
-				</div>
-			</div>
-		</div>          
-
-
-		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-		<script src="js/jquerylib.js"></script>
-		<script src="js/jquery-3.2.1.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/wow.min.js"></script>
-		<script src="js/custom.js"></script>
-		<script src="js/modernizr-custom.js"></script> 
-
-		<script> 	    
-			$(document).ready(function(){
-				$(".search-field").hide();
-				$("#search").click(function(){ 	       
-					$(".search-field").slideToggle();
-				}); 	    
-			});   
-		</script>
+		<!--Footer start-->
+		<?php include('includes/footer.php');?>
+		<!--Footer end-->
+		
 	</body>
 
 	</html>
