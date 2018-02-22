@@ -34,8 +34,8 @@
 
 		}
 
-		public function show_comment(){
-			$sql = "SELECT b.id, c.bookId, c.comment, u.firstName, u.lastName FROM tbl_comment c JOIN tbl_book b ON c.bookId = b.id join tbl_user u ON c.userId = u.id";
+		public function show_comment($bookId){
+			$sql = "SELECT b.id, c.created_at, c.bookId, c.comment, u.firstName, u.lastName, u.id, i.userId, i.profileImage FROM tbl_comment c JOIN tbl_book b ON c.bookId = b.id join tbl_user u ON c.userId = u.id join tbl_user_image i on c.userId = i.userId where c.bookId='$bookId'  order by c.created_at ASC";
 
 			$sql_result = mysqli_query($this->connection,$sql);
 			

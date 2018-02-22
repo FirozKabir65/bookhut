@@ -49,7 +49,7 @@
 				$_SESSION['userId'] = $user_info['id'];
 				$_SESSION['firstName'] = $user_info['firstName'];
 				$_SESSION['lastName'] = $user_info['lastName'];
-				$_SESSION['name'] = $_SESSION['firstName'].' '.$_SESSION['lastName'];
+				$_SESSION['name'] = $user_info['firstName'].' '.$user_info['lastName'];
 				header('Location: homePage.php');
 			}
 			else {
