@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.6.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2018 at 05:03 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.9
+-- Generation Time: Feb 23, 2018 at 11:41 PM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -93,18 +91,9 @@ CREATE TABLE `tbl_comment` (
 --
 
 INSERT INTO `tbl_comment` (`id`, `userId`, `bookId`, `comment`, `created_at`, `modified_at`) VALUES
-(5, 2, 2, 'hello from demo', '2018-02-22 05:19:51', '0000-00-00 00:00:00'),
-(6, 2, 2, 'demo dmeo demo ', '2018-02-22 05:20:13', '0000-00-00 00:00:00'),
-(7, 2, 2, 'demo dmeo demo ', '2018-02-22 05:20:13', '0000-00-00 00:00:00'),
-(8, 2, 3, 'demo demo', '2018-02-22 05:21:32', '0000-00-00 00:00:00'),
-(9, 1, 2, 'demo demo', '2018-02-22 05:23:36', '0000-00-00 00:00:00'),
-(10, 1, 3, 'demo', '2018-02-22 05:23:56', '0000-00-00 00:00:00'),
-(11, 1, 2, 'helo', '2018-02-22 05:24:09', '0000-00-00 00:00:00'),
-(12, 2, 3, 'demo', '2018-02-22 05:25:54', '0000-00-00 00:00:00'),
-(13, 2, 2, 'helo helo', '2018-02-22 05:30:05', '0000-00-00 00:00:00'),
-(14, 3, 6, 'first comment for book information', '2018-02-22 15:03:48', '0000-00-00 00:00:00'),
-(15, 1, 6, 'Demo comment', '2018-02-22 20:04:21', '0000-00-00 00:00:00'),
-(16, 1, 6, 'hello', '2018-02-22 20:04:38', '0000-00-00 00:00:00');
+(22, 3, 3, 'hello comemts', '2018-02-23 16:12:46', '0000-00-00 00:00:00'),
+(23, 3, 3, 'hello', '2018-02-23 16:23:12', '0000-00-00 00:00:00'),
+(25, 3, 7, 'hello', '2018-02-23 16:33:06', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -128,7 +117,7 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`id`, `firstName`, `lastName`, `email`, `password`, `gender`) VALUES
 (1, 'Geergitee', 'Jahan', 'test@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 1),
 (2, 'Demo', 'demo', 'demo@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 0),
-(3, 'JObayer', 'Mojumder', 'jobayer.pro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0),
+(3, 'Jobayer', 'Mojumder', 'jobayer.pro@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0),
 (4, 'Iffat ', 'Jahan', 'pithia@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 1),
 (5, 'Nustar', 'Jahan', 'nusrat@gmail.com', 'c4ca4238a0b923820dcc509a6f75849b', 1);
 
@@ -150,7 +139,8 @@ CREATE TABLE `tbl_user_image` (
 
 INSERT INTO `tbl_user_image` (`id`, `userId`, `profileImage`) VALUES
 (1, 1, 'images/userImages/download (1).jpg'),
-(3, 4, 'images/userImages/hqdefault.jpg');
+(3, 4, 'images/userImages/hqdefault.jpg'),
+(7, 3, 'images/userImages/e1483988518866.jpg');
 
 -- --------------------------------------------------------
 
@@ -175,7 +165,8 @@ CREATE TABLE `tbl_user_profile` (
 --
 
 INSERT INTO `tbl_user_profile` (`id`, `userId`, `profession`, `favouriteBooks`, `favouriteWriters`, `interests`, `address`, `created_at`, `modified_at`) VALUES
-(20, 1, 'student', 'Favourite Books', 'Favourite Writers', 'Interests', 'Address', '2018-02-23 15:36:30', '0000-00-00 00:00:00');
+(20, 1, 'student', 'Favourite Books', 'Favourite Writers', 'Interests', 'Address', '2018-02-23 15:36:30', '0000-00-00 00:00:00'),
+(21, 3, 'software engineer', 'Feluda', 'scb', 'crime,drama', 'No. 36, (Ground Floor), Persiaran Sultan Ibrahim, Off Lintang Batu 3,41300 Klang Selangor', '2018-02-23 17:10:08', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -232,37 +223,31 @@ ALTER TABLE `tbl_user_profile`
 --
 ALTER TABLE `tbl_book`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
 --
 -- AUTO_INCREMENT for table `tbl_book_category`
 --
 ALTER TABLE `tbl_book_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
 --
 -- AUTO_INCREMENT for table `tbl_user_image`
 --
 ALTER TABLE `tbl_user_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `tbl_user_profile`
 --
 ALTER TABLE `tbl_user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Constraints for dumped tables
 --
@@ -292,7 +277,6 @@ ALTER TABLE `tbl_user_image`
 --
 ALTER TABLE `tbl_user_profile`
   ADD CONSTRAINT `tbl_user_profile_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `tbl_user` (`id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

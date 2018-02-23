@@ -21,9 +21,9 @@
 			$userId = $data['userId'];
 			$bookId = $data['bookId'];
 			$comment = $data['comment'];
+
 			$sql = "INSERT INTO tbl_comment (userId,bookId,comment) VALUES ('$userId','$bookId','$comment')";
 			$sql_result = mysqli_query($this->connection,$sql);
-			
 			if($sql_result){
 				return $sql_result;
 			}
@@ -35,8 +35,7 @@
 		}
 
 		public function show_comment($bookId){
-			$sql = "SELECT b.id, c.id AS commentId, c.created_at, c.bookId, c.comment, u.firstName, u.lastName, u.id, i.userId, i.profileImage FROM tbl_comment c JOIN tbl_book b ON c.bookId = b.id join tbl_user u ON c.userId = u.id join tbl_user_image i on c.userId = i.userId where c.bookId=$bookId  order by c.created_at ASC";
-
+			$sql = "SELECT b.id, c.id as commentId, c.created_at, c.bookId, c.comment, u.firstName, u.lastName, u.id, i.userId, i.profileImage FROM tbl_comment c JOIN tbl_book b ON c.bookId = b.id join tbl_user u ON c.userId = u.id left join tbl_user_image i on c.userId = i.userId where c.bookId='$bookId' order by c.created_at ASC";
 			$sql_result = mysqli_query($this->connection,$sql);
 			
 			if($sql_result){

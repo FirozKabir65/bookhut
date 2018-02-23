@@ -42,7 +42,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">Profession:</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" name="Profession" value="<?php echo $profileInfo['profession'];?>">
+                                <input type="text" class="form-control" name="profession" value="<?php echo $profileInfo['profession'];?>">
                             </div>
                         </div>
                     

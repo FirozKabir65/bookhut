@@ -1,9 +1,12 @@
-<?php 
-	if(isset($_GET['logout'])){
-		require_once ('class/login.php');
-		$registration = new Registration();
-		$registration->user_logout();
-	}
+<?php
+if (!isset($_SESSION['userId'])) {
+	header('Location: index.php');
+}
+if(isset($_GET['logout'])){
+	require_once ('class/login.php');
+	$registration = new Registration();
+	$registration->user_logout();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

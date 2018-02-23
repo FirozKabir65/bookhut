@@ -20,7 +20,7 @@
 			<a href="viewProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info">View Profile</button></a>
 		</div>
 		<div class="edit-profile">
-			<a href="updateProfile.php"><button type="btn" class="btn btn-info">Update Profile</button></a> 
+			<a href="editProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info">Update Profile</button></a> 
 		</div>
 	</div>
 </div>

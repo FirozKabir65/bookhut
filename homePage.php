@@ -1,5 +1,6 @@
 <?php
 // session_start();
+
 require_once ('class/user.php');
 require_once ('class/postStatus.php');
 require_once ('class/comment.php');
@@ -22,7 +23,7 @@ $post = $status->show_post($page);
 $paginate = $status->pagination();
 $comment = new Comment();
 
-if(isset($_POST['btn'])){
+if(isset($_POST['commentBtn'])){
 	$storeComment = $comment->store_comment($_POST);
 }
 
@@ -76,7 +77,7 @@ if(isset($_GET['status'])){
 						<br>
 					</div>
 					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-						<img class="img-responsive book-img" src="<?php if(isset($res['bookImage'])){
+						<img class="img-responsive book-img" src="<?php if(isset($res['bookImage']) && $res['bookImage']!=''){
 									echo $res['bookImage'];
 								}else{
 									echo 'images/bookImages/book.jpg';
@@ -113,15 +114,13 @@ if(isset($_GET['status'])){
 								<input type="number" name="bookId" value="<?php echo $res['id'];?>" style='display: none;'>
 								<input type="number" name="userId" value="<?php echo $_SESSION['userId']?>" style='display: none;'>
 								<textarea name="comment" id="" cols="60" rows="3" placeholder="Add a comment..." class="form-control"></textarea>
-								<button class="glyphicon glyphicon-send btn btn-info" type="submit" title="Submit" name="btn"></button>
+								<button class="glyphicon glyphicon-send btn btn-info" type="submit" title="Submit" name="commentBtn"></button>
 							</form>
 						</span>
 
 						<?php
 						$showComment = $comment->show_comment($res['id']);
-						while($allComments = mysqli_fetch_assoc($showComment)){ 
-
-							?>
+						while($allComments = mysqli_fetch_assoc($showComment)){ ?>
 							
 							<img class="commentators-image" src="<?php if(isset($allComments['profileImage'])){ echo $allComments['profileImage']; }else{ echo 'images/userImages/default_user_img.jpg';}?>" alt="">&nbsp; <span><b><?php echo $allComments['firstName'].' '.$allComments['lastName'];?></b></span><br>
 							<small class="user-comments"><?php if(isset($allComments['comment'])){

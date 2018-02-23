@@ -1,4 +1,8 @@
 <?php 
+	session_start();
+	if (isset($_SESSION['userId'])) {
+		header('Location: homePage.php');
+	}
 	require_once 'class/login.php';
 	$message ="";
 	if(isset($_POST['btn'])){
@@ -7,8 +11,7 @@
 		$message = $registration->save_user_info($_POST);
 	}
 
-	if(isset($_POST['loginBtn'])){
-			
+	if(isset($_POST['loginBtn'])){			
 		$login = new Registration();
 		$login->check_user_info($_POST);
 	}
