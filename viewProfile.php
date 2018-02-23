@@ -4,6 +4,10 @@
 	require_once ('class/user.php');
 	require_once ('class/postStatus.php');
 	require_once ('class/login.php');
+	require_once ('class/comment.php');
+
+	$comment = new Comment();
+
 
 
 	$registration = new Registration();
@@ -18,6 +22,10 @@
 	    $status = $status->show_post_by_id($id);
 	}
 
+	if(isset($_GET['status'])){
+		$id = ($_GET['id']);
+		$delete = $comment->delete($id);
+	}
 
 
 ?>
@@ -83,11 +91,15 @@
 	                <div class="col-md-12">
 	                	<div class="media">
 	                		<div class="media-left">
-	                			<img class="post-user" src="images/templateImages/man.jpg" alt="user">
+	                			<img class="post-user" src="<?php if(isset($result['profileImage'])){
+									echo $result['profileImage'];
+								}else{
+									echo 'images/userImages/default_user_img.jpg';
+								} ?>" alt="user">
 	                		</div>
 	                		<div class="media-body">
 	                			<div class="media-heading">
-	                				<h4><?php echo $_SESSION['name'];?></h4><br>
+	                				<h4><?php echo $result['firstName'].' '.$result['lastName'];?></h4><br>
 	                				<p>Posted on <?php echo $result['created_at'];?></p>
 	                			</div>
 	                		</div>
@@ -126,13 +138,25 @@
 	        		            <button class="glyphicon glyphicon-send btn btn-info" type="button" title="Submit" ></button>
         		            </form>
         		        </span>
+
+        		        <?php
+        		        $showComment = $comment->show_comment($result['id']);
+        		        while($allComments = mysqli_fetch_assoc($showComment)){ ?>
         		        
         		        
-        		        <img class="commentators-image" src="images/templateImages/man.jpg" alt="">&nbsp; <span><b>user-name</b></span><br>
-        		        <small class="user-comments">comments</small><br><br>
+        		        <img class="commentators-image" src="<?php if(isset($allComments['profileImage'])){ echo $allComments['profileImage']; }else{ echo 'images/userImages/default_user_img.jpg';}?>" alt="">&nbsp; <span><b><?php echo $allComments['firstName'].' '.$allComments['lastName'];?></b></span><br>
+        		        <small class="user-comments"><?php if(isset($allComments['comment'])){
+        		        	echo $allComments['comment'];
+        		        }?></small><br><br>
+
+        		        <?php if ($_SESSION['userId']== $allComments['id']) { ?>
+        		        <input type="hidden" value="<?php echo $allComments['commentId']?>">
+
         		        <a href="" class="btn btn-success">Edit</a>
-        		        <a href="" class="btn btn-danger">Delete</a>
-        		    </div>
+        		        <a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger">Delete</a>
+        		        <br><br>
+        		        <?php } ?>
+        		        <?php } ?>
         		</div>
         		<!-- comment section start -->
         		

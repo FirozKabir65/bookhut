@@ -31,6 +31,10 @@ if(isset($_GET['status'])){
 	$id = ($_GET['id']);
 	$delete = $comment->delete($id);
 }
+if(isset($_GET['del'])){
+	$id = ($_GET['id']);
+	$delete = $status->post_delete($id);
+}
 
 
 ?>
@@ -98,7 +102,7 @@ if(isset($_GET['status'])){
 
 				<a href="editBookInfo.php?id=<?php echo $res['id'];?>" class="glyphicon glyphicon-edit btn btn-success" title="Edit"></a>
 
-				<a href="" class="glyphicon glyphicon-trash btn btn-danger" title="Delete"></a>
+				<a href="?del=delete&&id=<?php echo $res['id'];?>" class="glyphicon glyphicon-trash btn btn-danger" title="Delete"></a>
 				<?php }?>
 
 				<!-- comment section start -->

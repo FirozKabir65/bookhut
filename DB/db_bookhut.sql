@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2018 at 11:41 PM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Generation Time: Feb 24, 2018 at 12:02 AM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -45,12 +47,11 @@ CREATE TABLE `tbl_book` (
 --
 
 INSERT INTO `tbl_book` (`id`, `userId`, `bookPath`, `bookName`, `bookCategoryId`, `bookAuthor`, `bookDescription`, `bookImage`, `status`, `created_at`, `modified_at`) VALUES
-(2, 1, 'books/FERRISS_Timothy_-_The_4-Hour_Workweek.pdf', 'Test', 1, 'Demo', 'userIduserId userIduserIduserIduserId', 'images/bookImages/download (1).jpg', 1, '2018-02-18 15:19:48', '0000-00-00 00:00:00'),
 (3, 2, 'books/U1L9-Journal of Civil Engineering and Architecture - Issue 2 2013 - Interactive Teaching in In', 'demo', 1, 'Demos', 'userIduserIduserIduserIduserIduserIduserId', 'images/bookImages/images.jpg', 1, '2018-02-18 15:22:57', '0000-00-00 00:00:00'),
 (4, 2, 'books/45_Big-Data.pdf', 'Big data', 1, 'Batman', 'Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man Iron man  ', 'images/bookImages/images (1).jpg', 1, '2018-02-18 17:27:24', '0000-00-00 00:00:00'),
-(5, 1, 'books/Google DevFestâ€™17 Bangla invitation letter .pdf', 'DEv fest', 1, 'Dev Fest', 'Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest Dev Fest ', 'images/bookImages/background1.jpg', 1, '2018-02-21 18:06:51', '0000-00-00 00:00:00'),
+(5, 1, 'books/Google DevFestâ€™17 Bangla invitation letter .pdf', 'DEv fest', 1, 'Dev Fest', 'Dev Fest ', 'images/bookImages/1.jpg', 1, '2018-02-23 21:23:52', '0000-00-00 00:00:00'),
 (6, 3, 'books/chart.pdf', 'Test Book', 1, 'Test AUthor', 'test book descriptions.', 'images/bookImages/rick_kelly.jpg', 1, '2018-02-22 15:01:27', '0000-00-00 00:00:00'),
-(7, 4, 'books/applicationformpostgraduateyc.pdf', 'Application book', 1, 'Mr. Author', 'Application book Application book Application book description', '', 1, '2018-02-23 14:58:40', '0000-00-00 00:00:00');
+(7, 4, 'books/Internship Offer Letter for CSE Intern.pdf', 'Application book', 1, 'Mr. DEmo', 'Application book Description\r\n', 'images/bookImages/post1.jpg', 1, '2018-02-23 22:18:24', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,9 @@ CREATE TABLE `tbl_comment` (
 INSERT INTO `tbl_comment` (`id`, `userId`, `bookId`, `comment`, `created_at`, `modified_at`) VALUES
 (22, 3, 3, 'hello comemts', '2018-02-23 16:12:46', '0000-00-00 00:00:00'),
 (23, 3, 3, 'hello', '2018-02-23 16:23:12', '0000-00-00 00:00:00'),
-(25, 3, 7, 'hello', '2018-02-23 16:33:06', '0000-00-00 00:00:00');
+(25, 3, 7, 'hello', '2018-02-23 16:33:06', '0000-00-00 00:00:00'),
+(26, 1, 7, 'Hello comment', '2018-02-23 18:10:52', '0000-00-00 00:00:00'),
+(27, 1, 5, 'hello', '2018-02-23 18:37:58', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -165,7 +168,7 @@ CREATE TABLE `tbl_user_profile` (
 --
 
 INSERT INTO `tbl_user_profile` (`id`, `userId`, `profession`, `favouriteBooks`, `favouriteWriters`, `interests`, `address`, `created_at`, `modified_at`) VALUES
-(20, 1, 'student', 'Favourite Books', 'Favourite Writers', 'Interests', 'Address', '2018-02-23 15:36:30', '0000-00-00 00:00:00'),
+(20, 1, 'student', 'Favourite Books', 'Favourite Writers', 'Cricket', 'Address', '2018-02-23 18:13:19', '0000-00-00 00:00:00'),
 (21, 3, 'software engineer', 'Feluda', 'scb', 'crime,drama', 'No. 36, (Ground Floor), Persiaran Sultan Ibrahim, Off Lintang Batu 3,41300 Klang Selangor', '2018-02-23 17:10:08', '0000-00-00 00:00:00');
 
 --
@@ -223,31 +226,37 @@ ALTER TABLE `tbl_user_profile`
 --
 ALTER TABLE `tbl_book`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `tbl_book_category`
 --
 ALTER TABLE `tbl_book_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `tbl_comment`
 --
 ALTER TABLE `tbl_comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT for table `tbl_user_image`
 --
 ALTER TABLE `tbl_user_image`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `tbl_user_profile`
 --
 ALTER TABLE `tbl_user_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- Constraints for dumped tables
 --
@@ -277,6 +286,7 @@ ALTER TABLE `tbl_user_image`
 --
 ALTER TABLE `tbl_user_profile`
   ADD CONSTRAINT `tbl_user_profile_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `tbl_user` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

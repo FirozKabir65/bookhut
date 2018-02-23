@@ -81,48 +81,83 @@
 			}
 		}
 
-		public function update_book_if($data){
-			if($_FILES['bookImage']['name']){
-				$bookId = $data['id'];
+		public function update_book_info($data){
+			$bookId = $data['id'];
+			$bookName = $data['bookName'];
+			$bookCategoryId = $data['bookCategoryId'];
+			$bookAuthor = $data['bookAuthor'];
+			$bookDescription = $data['bookDescription'];
+			$dir = $_FILES['bookImage']['name'];
+			$bookPath = $_FILES['bookPath']['name'];
+
+			if($dir = $_FILES['bookImage']['name'] && $bookPath = $_FILES['bookPath']['name']){
+			//select image
 				$query_result = mysqli_query($this->connection,"SELECT bookImage FROM tbl_book WHERE id = '$bookId'");
 				$bookImage = mysqli_fetch_assoc($query_result);
-				unlink($bookImage['bookImage']);
+				if ($bookImage){
+					unlink($bookImage['bookImage']);			
+				}
 				$image_url=$this->save_book_image();
-				// $blog_id = $data['blog_id'];
-				$bookName = $data['bookName'];
-				$bookCategoryId = $data['bookCategoryId'];
-				$bookAuthor = $data['bookAuthor'];
-				$bookDescription = $data['bookDescription'];
-
-
-				$sql = "UPDATE tbl_book SET blog_id = '$blog_id', blog_title = '$blog_title', author_name = '$author_name', blog_description = '$blog_description', blog_image = '$image_url', publication_status = '$publication_status'WHERE blog_id  = '$blog_id'";
+			//select pdf
+				$query_result1 = mysqli_query($this->connection,"SELECT bookPath FROM tbl_book WHERE id = '$bookId'");
+				$bookPath = mysqli_fetch_assoc($query_result1);
+				if ($bookPath){
+					unlink($bookPath['bookPath']);			
+				}
+				$bookPath = $this->save_book_pdf();
+			//update all
+				$sql = "UPDATE tbl_book SET bookPath = '$bookPath', bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription', bookImage = '$image_url' WHERE id = '$bookId'";
 				$sql_result = mysqli_query($this->connection,$sql);
 				if($sql_result){
-					header('Location: manageblog.php');
+					header('Location: homePage.php');
 				}
 
 				else {
 					die('query problem');
 				}
 			}
+
+			elseif ($dir = $_FILES['bookImage']['name']) {
+				$query_result = mysqli_query($this->connection,"SELECT bookImage FROM tbl_book WHERE id = '$bookId'");
+				$bookImage = mysqli_fetch_assoc($query_result);
+				if ($bookImage){
+					unlink($bookImage['bookImage']);			
+				}
+				$image_url=$this->save_book_image();
+				$sql = "UPDATE tbl_book SET bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription', bookImage = '$image_url' WHERE id = '$bookId'";
+				$sql_result = mysqli_query($this->connection,$sql);
+				if($sql_result){
+					header('Location: homePage.php');
+				}
+
+				else {
+					die('query problem');
+				}
+			}
+			elseif ($bookPath = $_FILES['bookPath']['name']){
+				$query_result1 = mysqli_query($this->connection,"SELECT bookPath FROM tbl_book WHERE id = '$bookId'");
+				$bookPath = mysqli_fetch_assoc($query_result1);
+				if ($bookPath){
+					unlink($bookPath['bookPath']);			
+				}
+				$bookPath = $this->save_book_pdf();
+				$sql = "UPDATE tbl_book SET bookPath = '$bookPath', bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription' WHERE id = '$bookId'";
+				$sql_result = mysqli_query($this->connection,$sql);
+				if($sql_result){
+					header('Location: homePage.php');
+				}
+
+				else {
+					die('query problem');
+				}
+			}
+
 			else {
-				$blog_id = $data['blog_id'];
-				$blog_title = $data['blog_title'];
-				$author_name = $data['author_name'];
-				$blog_description = $data['blog_description'];
-				$publication_status = $data['publication_status'];
-
-				$sql = "UPDATE tbl_blog SET blog_id = '$blog_id', blog_title = '$blog_title', author_name = '$author_name', blog_description = '$blog_description', publication_status = '$publication_status'WHERE blog_id  = '$blog_id'";
-				$sql_result = mysqli_query($this->connection,$sql);
-				if($sql_result){
-					header('Location: manageblog.php');
-				}
-
-				else {
-					die('query problem');
-				}
+				$sql = "UPDATE tbl_book SET bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription' WHERE id = '$bookId'";
+				$sql_result = mysqli_query($this->connection,$sql);	
 			}
 
+			header('Location: homePage.php');
 		}
 
 		public function save_book_pdf(){
@@ -195,6 +230,8 @@
 				die('Upload a valid image file');
 			}
 		}
+
+		
 	}
 
 ?>
