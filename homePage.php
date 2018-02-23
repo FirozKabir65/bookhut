@@ -1,14 +1,8 @@
 <?php
-session_start();
+// session_start();
 require_once ('class/user.php');
 require_once ('class/postStatus.php');
 require_once ('class/comment.php');
-
-// if(isset($_GET['logout'])){
-// 	require_once ('class/login.php');
-// 	$registration = new Registration();
-// 	$registration->user_logout();
-// }
 
 $userProfile = new UserProfile();
 $img = $userProfile->user_image();
@@ -20,6 +14,11 @@ if (isset($_GET['page'])) {
 	$page=0;
 }
 $post = $status->show_post($page);
+// $post = mysqli_fetch_assoc($post);
+// echo "<pre>";
+// print_r($post);
+// die();
+
 $paginate = $status->pagination();
 $comment = new Comment();
 
@@ -46,7 +45,7 @@ if(isset($_GET['status'])){
 
 			<div class="main-content col-lg-offset-1 col-lg-8 col-md-offset-1 col-md-8 col-sm-offset-1 col-sm-7 col-xs-7">
 
-				<!-- book info show section end -->
+				<!-- book info show section start -->
 				<?php while($res=mysqli_fetch_assoc($post)){ ?>
 				<div class="row homepage-row">
 
@@ -77,7 +76,11 @@ if(isset($_GET['status'])){
 						<br>
 					</div>
 					<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-						<img class="img-responsive book-img" src="<?php echo $res['bookImage'];?>" alt="book-img">
+						<img class="img-responsive book-img" src="<?php if(isset($res['bookImage'])){
+									echo $res['bookImage'];
+								}else{
+									echo 'images/bookImages/book.jpg';
+								} ?>" alt="book-img">
 					</div>
 					<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
 						<p><?php echo $res['bookDescription'];?></p>

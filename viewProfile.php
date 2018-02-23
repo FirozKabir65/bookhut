@@ -1,11 +1,18 @@
 <?php
-	session_start();
+	// session_start();
 	$id = $_GET['id'];
-	require_once 'class/user.php';
-	require_once 'class/postStatus.php';
-	$status = new Status();
+	require_once ('class/user.php');
+	require_once ('class/postStatus.php');
+	require_once ('class/login.php');
 
+
+	$registration = new Registration();
+	$userLoginInfo = $registration->user_info($_SESSION['userId']);
+
+	$status = new Status();
 	$userProfile = new UserProfile();
+	$img = $userProfile->user_image();
+	
 	if(isset($id)){
 	    $profileInfo = $userProfile->show_user_profile($id);
 	    $status = $status->show_post_by_id($id);
@@ -21,16 +28,17 @@
 
 	<div class="container content-body">
 	    <div class="row">
+	    	<!-- userinfo start -->
 	        <div class="user-info col-md-offset-1 col-md-10">
 	        	<div class="row homepage-row">
 	        	    <div class="col-md-12" style="margin-bottom: 30px;">
 	        	    	<div class="media">
 	        	    		<div class="media-left">
-	        	    			<img class="user" src="images/templateImages/man.jpg" alt="user">
+	        	    			<img class="user" src="<?php echo $img ;?>" alt="user">
 	        	    		</div>
 	        	    		<div class="media-body">
 	        	    			<div class="media-heading">
-	        	    				<h3><?php echo $_SESSION['name'];?></h3><br>
+	        	    				<h3><?php echo $userLoginInfo['firstName'].' '.$userLoginInfo['lastName']?></h3><br>
 	        	    				<h4>Profession : <?php echo $profileInfo['profession']?></h4>
 	        	    			</div>
 	        	    		</div>
@@ -57,11 +65,20 @@
 						<div class="col-md-8"><?php echo $profileInfo['address'];?></div>
 					</div>
 					<hr>
+					<div class="row col-md-offset-2 col-md-3">
+
+						<a href="editProfile.php?id=<?php echo $_SESSION['userId']?>" class="btn btn-info btn-block">Edit Profile</a>
+					</div>
+					
 	        	</div>
 	        </div>
 
+	        <!-- userinfo end -->
+
 	        <div class="main-content col-md-offset-1 col-md-10">
+	        	<!-- post start -->
 	        	<?php while($result=mysqli_fetch_assoc($status)){?>
+	        	<!-- book info show section start -->
 	            <div class="row homepage-row">
 	                <div class="col-md-12">
 	                	<div class="media">
@@ -95,6 +112,8 @@
         		<button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button>
         		<button class="glyphicon glyphicon-trash btn btn-danger" type="button" title="Delete"></button>
 
+        		<!-- comment section start -->
+
 				<div class="row comments">
         		    <ul>
         		        <li><a href="#"><i class="fas fa-2x fa-heart" title="Like"></i></a></li>
@@ -115,8 +134,12 @@
         		        <a href="" class="btn btn-danger">Delete</a>
         		    </div>
         		</div>
+        		<!-- comment section start -->
+        		
         		<hr>
         		<?php };?>
+        		<!-- book info show section end -->
+
 
         		<div class="pagination">
         		    <li><a href="#">1</a></li>

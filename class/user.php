@@ -1,6 +1,6 @@
 <?php
 	
-	
+	session_start();
 	class UserProfile {
 
 		protected $connection;
@@ -19,59 +19,37 @@
 		}
 
 		public function store_user_profile($data){
-
-			$id = $data['id'];
-			$firstName = $data['firstName'];
-			$lastName = $data['lastName'];
+			// print_r($data);
+			// exit();
 			$id = $data['id'];
 			$profession = $data['profession'];
 			$favouriteBooks = $data['favouriteBooks'];
 			$favouriteWriters = $data['favouriteWriters'];
 			$interests = $data['interests'];
 			$address = $data['address'];
+			$dir = $_FILES['profileImage']['name'];
 
-			$sql_user = "UPDATE tbl_user SET firstName='$firstName', lastName='$lastName' WHERE id='$id'";
+			if($dir = $_FILES['profileImage']['name']){
+				$sql_profile = "INSERT INTO tbl_user_profile (userId,profession,favouriteBooks, favouriteWriters, interests, address) VALUES('$id','$profession','$favouriteBooks','$favouriteWriters','$interests','$address')";
 
-			$sql_result = mysqli_query($this->connection,$sql_user);
+				$sql_result1 = mysqli_query($this->connection,$sql_profile);
+				
+				$profile = $this->save_profile_image();
+				
+				$sql_image = "INSERT INTO tbl_user_image (userId,profileImage) VALUES('$id','$profile')";
+
+				$sql_result2 = mysqli_query($this->connection,$sql_image);
+
+			}
+			else {
+				
+				$sql_profile = "INSERT INTO tbl_user_profile (userId,profession,favouriteBooks, favouriteWriters, interests, address) VALUES('$id','$profession','$favouriteBooks','$favouriteWriters','$interests','$address')";
+
+				$sql_result1 = mysqli_query($this->connection,$sql_profile);
+			}
+
+			header('Location: homePage.php');
 			
-			// if($sql_result){
-			// 	// return $sql_result;
-			// }
-			// else {
-			// 	die('query problem');
-			// }
-
-			$sql_profile = "INSERT INTO tbl_user_profile (userId,profession,favouriteBooks, favouriteWriters, interests, address) VALUES('$id','$profession',$favouriteBooks','$favouriteWriters','$interests','$address')";
-
-			$sql_result1 = mysqli_query($this->connection,$sql_profile);
-			
-			// if($sql_result1){
-			// 	return $sql_result1;
-			// }
-			// else {
-			// 	die('query problem');
-			// }
-			$profileImage = $this->save_profile_image();
-
-			// $sql_image = "INSERT INTO tbl_user_image (userId,profileImage) VALUES('$id','$profileImage')";
-
-			// $sql_result2 = mysqli_query($this->connection,$sql_image);
-
-			$sql_image = "UPDATE tbl_user_image SET profileImage='$profileImage' WHERE userId='$id'";
-
-			$sql_result2 = mysqli_query($this->connection,$sql_image);
-
-			// UPDATE Customers
-			// SET ContactName='Alfred Schmidt', City='Frankfurt'
-			// WHERE CustomerID=1;
-			
-			// if($sql_result2){
-			// 	return $sql_result2;
-			// }
-			// else {
-			// 	die('query problem');
-			// }
-
 
 		}
 
@@ -88,9 +66,74 @@
 			}
 		}
 
+		public function user_image(){
+			// session_start();
+			$res = $_SESSION['userId'];
+			$sql = "SELECT * FROM tbl_user_image WHERE userId = '$res'";
+			$sql_result = mysqli_query($this->connection,$sql);
+			$user_img = mysqli_fetch_assoc($sql_result);
+			
+			if($user_img){
+
+				// $res = $_SESSION['profileImage'] = $user_img['profileImage'];
+				$res = $user_img['profileImage'];
+				return $res;
+			}
+			else {
+				$res = 'images/userImages/default_user_img.jpg';
+				return $res;
+			}
+		}
+
+		public function update_user_info($data){
+			$id = $data['id'];
+			$firstName = $data['firstName'];
+			$lastName = $data['lastName'];
+			$profession = $data['profession'];
+			$favouriteBooks = $data['favouriteBooks'];
+			$favouriteWriters = $data['favouriteWriters'];
+			$interests = $data['interests'];
+			$address = $data['address'];
+			$dir = $_FILES['profileImage']['name'];
+
+			if($dir = $_FILES['profileImage']['name']){
+
+				$query_result = mysqli_query($this->connection,"SELECT profileImage FROM tbl_user_image WHERE userId = '$id'");
+				$image = mysqli_fetch_assoc($query_result);
+				unlink($image['profileImage']);
+
+				$sql_user = "UPDATE tbl_user SET firstName='$firstName', lastName='$lastName' WHERE id='$id'";
+
+				$sql_result = mysqli_query($this->connection,$sql_user);
+				
+				$sql_profile = "UPDATE tbl_user_profile SET userId='$id', profession ='$profession', favouriteBooks='$favouriteBooks', favouriteWriters='$favouriteWriters', interests='$interests', address='$address'";
+
+				$sql_result1 = mysqli_query($this->connection,$sql_profile);
+				
+				$profile = $this->save_profile_image();
+				
+				$sql_image = "UPDATE tbl_user_image SET profileImage = '$profile' WHERE userId='$id'";
+
+				$sql_result2 = mysqli_query($this->connection,$sql_image);
+
+			}
+			else {
+				$sql_user = "UPDATE tbl_user SET firstName='$firstName', lastName='$lastName' WHERE id='$id'";
+
+				$sql_result = mysqli_query($this->connection,$sql_user);
+				
+				$sql_profile = "UPDATE tbl_user_profile SET userId='$id', profession ='$profession', favouriteBooks='$favouriteBooks', favouriteWriters='$favouriteWriters', interests='$interests', address='$address'";
+
+				$sql_result1 = mysqli_query($this->connection,$sql_profile);
+			}
+
+			header('Location: homePage.php');
+
+		}
 
 		public function save_profile_image(){
 			$img = $_FILES['profileImage'];
+
 			$temp_locatn = $_FILES['profileImage']['tmp_name'];
 			$img_size = $_FILES['profileImage']['size'];
 			$check = getimagesize($temp_locatn);
@@ -124,25 +167,9 @@
 				die('Upload a valid image file');
 			}
 		}
-
-		public function user_image(){
-			// session_start();
-			$res = $_SESSION['userId'];
-			$sql = "SELECT * FROM tbl_user_image WHERE userId = '$res'";
-			$sql_result = mysqli_query($this->connection,$sql);
-			$user_img = mysqli_fetch_assoc($sql_result);
-			
-			if($user_img){
-
-				$res = $_SESSION['profileImage'] = $user_img['profileImage'];
-				return $res;
-			}
-			else {
-				$res = 'images/userImages/default_user_img.jpg';
-				return $res;
-			}
-		}
 	}
 
 
 ?>
+
+

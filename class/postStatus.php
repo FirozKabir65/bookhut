@@ -22,7 +22,7 @@
 			else{
 				$page = (($page * 5) - 5);
 			}
-			$sql = "SELECT b.id, b.userId, u.firstName, u.lastName, b.created_at, b.bookAuthor, b.bookName, b.bookImage, b.bookDescription, b.bookPath, i.profileImage, i.userId FROM tbl_book b JOIN tbl_user u ON b.userId = u.id left join tbl_user_image i on b.userId = i.userId order by b.id asc LIMIT $page, 5";
+			$sql = "SELECT b.id, b.userId, u.firstName, u.lastName, b.created_at, b.bookAuthor, b.bookName, b.bookImage, b.bookDescription, b.bookPath, i.profileImage, i.userId FROM tbl_book b JOIN tbl_user u ON b.userId = u.id left join tbl_user_image i on b.userId = i.userId order by b.id DESC LIMIT $page, 5";
 
 			$sql_result = mysqli_query($this->connection,$sql);
 			
@@ -37,6 +37,7 @@
 		public function show_post_by_id($data){
 			
 			$sql = "SELECT * FROM tbl_book WHERE userId='$data'";
+			// SELECT b.id, b.userId, u.firstName, u.lastName, b.created_at, b.bookAuthor, b.bookName, b.bookImage, b.bookDescription, b.bookPath, i.profileImage, i.userId FROM tbl_book b JOIN tbl_user u ON b.userId = u.id left join tbl_user_image i on b.userId = i.userId WHERE b.userId='$id' order by b.id DESC
 
 			$sql_result = mysqli_query($this->connection,$sql);
 			

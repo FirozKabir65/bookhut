@@ -31,25 +31,42 @@
 		public function save_book_info($data){
 
 			$bookPath=$this->save_book_pdf();
-			$bookImage=$this->save_book_image();
+			
 			$userId = $data['userId'];
 			$bookName = $data['bookName'];
 			$bookCategoryId = $data['bookCategoryId'];
 			$bookAuthor = $data['bookAuthor'];
 			$bookDescription = $data['bookDescription'];
+			$dir = $_FILES['bookImage']['name'];
 
-			$sql = "INSERT INTO tbl_book (userId,bookPath, bookName, bookCategoryId,bookAuthor, bookDescription,bookImage) VALUES ('$userId','$bookPath','$bookName','$bookCategoryId','$bookAuthor','$bookDescription','$bookImage')";
-			$sql_result = mysqli_query($this->connection,$sql);
+			if($dir = $_FILES['bookImage']['name']){
+				$bookImage=$this->save_book_image();
+				$sql = "INSERT INTO tbl_book (userId,bookPath, bookName, bookCategoryId,bookAuthor, bookDescription,bookImage) VALUES ('$userId','$bookPath','$bookName','$bookCategoryId','$bookAuthor','$bookDescription','$bookImage')";
+				$sql_result = mysqli_query($this->connection,$sql);
 
-			if($sql_result){
-				$message = "Book info save successfully";
-				return $message;
-			}
+				if($sql_result){
+					$message = "Book info save successfully";
+					return $message;
+				}
+				else {
+					die('query problem');
+				}
+
+			}	
+
 			else {
-				die('query problem');
-			}
+				$sql = "INSERT INTO tbl_book (userId,bookPath, bookName, bookCategoryId,bookAuthor, bookDescription) VALUES ('$userId','$bookPath','$bookName','$bookCategoryId','$bookAuthor','$bookDescription')";
+				$sql_result = mysqli_query($this->connection,$sql);
 
-			
+				if($sql_result){
+					$message = "Book info save successfully";
+					return $message;
+				}
+				else {
+					die('query problem');
+				}
+
+			}
 		}
 
 		public function edit_book_info($id){

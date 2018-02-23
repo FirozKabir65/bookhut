@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    require_once 'class/book.php';
-    require_once 'class/login.php';
+    // session_start();
+    require_once ('class/book.php');
+    require_once ('class/login.php');
     require_once ('class/user.php');
     $userProfile = new UserProfile();
     $img = $userProfile->user_image();

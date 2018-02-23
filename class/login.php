@@ -17,7 +17,7 @@
 		}
 
 		public function save_user_info($data){
-			$firstName = mysqli_real_escape_string($data['firstName']) ;
+			$firstName =($data['firstName']) ;
 			$lastName = $data['lastName'];
 			$email = $data['email'];
 			$password = md5($data['password']);
@@ -60,7 +60,6 @@
 		}
 
 		public function email_check($email){
-			// $email = $_POST['email'];
 			$sql = "SELECT * FROM tbl_user WHERE email='$email'";
 			$sql_result = mysqli_query($this->connection,$sql);
 
@@ -72,6 +71,22 @@
 				die('Query problem');
 			}
 		}
+
+		public function user_info($id){
+			$sql = "SELECT * FROM tbl_user WHERE id='$id'";
+			$sql_result = mysqli_query($this->connection,$sql);
+			$result = mysqli_fetch_assoc($sql_result);
+
+			if($result){
+				return $result;
+			}
+
+			else {
+				die('Query problem');
+			}	
+		}
+
+
 
 		public function user_logout(){
 			unset($_SESSION['userId']);
