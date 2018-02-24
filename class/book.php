@@ -106,7 +106,7 @@
 				}
 				$bookPath = $this->save_book_pdf();
 			//update all
-				$sql = "UPDATE tbl_book SET bookPath = '$bookPath', bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription', bookImage = '$image_url' WHERE id = '$bookId'";
+				$sql = "UPDATE tbl_book SET bookPath = '$bookPath', bookName = '$bookName' bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription', bookImage = '$image_url' WHERE id = '$bookId'";
 				$sql_result = mysqli_query($this->connection,$sql);
 				if($sql_result){
 					header('Location: homePage.php');
@@ -124,7 +124,7 @@
 					unlink($bookImage['bookImage']);			
 				}
 				$image_url=$this->save_book_image();
-				$sql = "UPDATE tbl_book SET bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription', bookImage = '$image_url' WHERE id = '$bookId'";
+				$sql = "UPDATE tbl_book SET  bookName = '$bookName',bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription', bookImage = '$image_url' WHERE id = '$bookId'";
 				$sql_result = mysqli_query($this->connection,$sql);
 				if($sql_result){
 					header('Location: homePage.php');
@@ -141,7 +141,7 @@
 					unlink($bookPath['bookPath']);			
 				}
 				$bookPath = $this->save_book_pdf();
-				$sql = "UPDATE tbl_book SET bookPath = '$bookPath', bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription' WHERE id = '$bookId'";
+				$sql = "UPDATE tbl_book SET  bookName = '$bookName', bookPath = '$bookPath', bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription' WHERE id = '$bookId'";
 				$sql_result = mysqli_query($this->connection,$sql);
 				if($sql_result){
 					header('Location: homePage.php');
@@ -153,7 +153,7 @@
 			}
 
 			else {
-				$sql = "UPDATE tbl_book SET bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription' WHERE id = '$bookId'";
+				$sql = "UPDATE tbl_book SET  bookName = '$bookName', bookCategoryId = '$bookCategoryId', bookAuthor = '$bookAuthor', bookDescription = '$bookDescription' WHERE id = '$bookId'";
 				$sql_result = mysqli_query($this->connection,$sql);	
 			}
 

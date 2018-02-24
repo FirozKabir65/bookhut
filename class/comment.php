@@ -59,4 +59,16 @@
 			}
 
 		}
+			//comment by comment id
+		public function comment_by_id($commentId){
+			$sql = "SELECT comment FROM tbl_comment WHERE id='$commentId'";
+			$sql_result = mysqli_query($this->connection,$sql);
+			$comment = mysqli_fetch_assoc($sql_result);
+			if($comment){
+				return $comment;
+			}
+			else {
+				die('query problem');
+			}
+		}
 	}		

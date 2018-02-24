@@ -121,7 +121,7 @@
             		</div>
         		</div>
         		<a href="<?php echo $result['bookPath'];?>" download><button class="glyphicon glyphicon-cloud-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></button></a>
-        		<button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button>
+        		<a href="editBookInfo.php?id=<?php echo $result['id'];?>"><button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button></a>
         		<button class="glyphicon glyphicon-trash btn btn-danger" type="button" title="Delete"></button>
 
         		<!-- comment section start -->
@@ -157,21 +157,13 @@
         		        <br><br>
         		        <?php } ?>
         		        <?php } ?>
+        		    </div>
         		</div>
         		<!-- comment section start -->
         		
         		<hr>
         		<?php };?>
         		<!-- book info show section end -->
-
-
-        		<div class="pagination">
-        		    <li><a href="#">1</a></li>
-        		    <li class="active"><a href="#">2</a></li>
-        		    <li><a href="#">3</a></li>
-        		    <li><a><span>....</span></a></li>
-        		    <div class="clear"> </div>
-        		</div>
             </div>
         </div>
     </div>

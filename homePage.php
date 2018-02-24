@@ -36,6 +36,11 @@ if(isset($_GET['del'])){
 	$delete = $status->post_delete($id);
 }
 
+if(isset($_GET['commentId'])){ 
+	$id = $_GET['commentId'];
+	$commentById = $comment->comment_by_id($id);
+}
+
 
 ?>
 <!--Header start-->
@@ -133,9 +138,9 @@ if(isset($_GET['del'])){
 
 							<?php if ($_SESSION['userId']== $allComments['id']) { ?>
 							<input type="hidden" value="<?php echo $allComments['commentId']?>">
-
-							<a href="" class="btn btn-success">Edit</a>
-							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger">Delete</a>
+						<!-- comment edit delete -->
+							<a href="?commentId=<?php echo $allComments['commentId'];?>" class="btn btn-success" data-toggle="modal" data-target="#myModal">Edit</a>
+							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="alert('Are u want to delete this comment')">Delete</a>
 							<br><br>
 							<?php } ?>
 							<?php } ?>
@@ -157,7 +162,25 @@ if(isset($_GET['del'])){
 			</div>
 		</div>
 
+		<!-- modal start -->
+		<div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog modal-sm">
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title">Modal Header</h4>
+		        </div>
+		        <div class="modal-body">
+		          <p><?php echo $commentById;?></p>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		    </div>
+		</div>
 
+		<!-- modal end -->
 		<!--Footer start-->
 		<?php include('includes/footer.php');?>
 		
