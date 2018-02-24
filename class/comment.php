@@ -59,16 +59,21 @@
 			}
 
 		}
-			//comment by comment id
-		public function comment_by_id($commentId){
-			$sql = "SELECT comment FROM tbl_comment WHERE id='$commentId'";
+
+		public function update_comment($data){
+			$id = $data['commentEdit'];
+			$comment = $data['comment'];
+			// print_r($data);
+			// exit();
+			$sql = "UPDATE tbl_comment SET comment='$comment' WHERE id ='$id'";
 			$sql_result = mysqli_query($this->connection,$sql);
-			$comment = mysqli_fetch_assoc($sql_result);
-			if($comment){
-				return $comment;
+			if($sql_result){
+				header("Location: homepage.php");
 			}
 			else {
 				die('query problem');
 			}
+
+
 		}
 	}		

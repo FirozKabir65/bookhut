@@ -36,9 +36,9 @@ if(isset($_GET['del'])){
 	$delete = $status->post_delete($id);
 }
 
-if(isset($_GET['commentId'])){ 
-	$id = $_GET['commentId'];
-	$commentById = $comment->comment_by_id($id);
+if(isset($_POST['updateBtn'])){
+	$updateComment = $comment->update_comment($_POST);
+	
 }
 
 
@@ -139,8 +139,8 @@ if(isset($_GET['commentId'])){
 							<?php if ($_SESSION['userId']== $allComments['id']) { ?>
 							<input type="hidden" value="<?php echo $allComments['commentId']; ?>">
 						<!-- comment edit delete -->
-							<a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='editCommentJs(<?php echo $allComments['commentId']; ?>);'>Edit</a>
-							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="alert('Are u want to delete this comment')">Delete</a>
+							<a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='editCommentJs(<?php echo $allComments['commentId']; ?>);'>Edit</a>
+							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="confirm('Are u want to delete this comment')">Delete</a>
 							<br><br>
 							<?php } ?>
 							<?php } ?>
@@ -173,13 +173,18 @@ if(isset($_GET['commentId'])){
 		          <button type="button" class="close" data-dismiss="modal">&times;</button>
 		          <h4 class="modal-title">Modal Header</h4>
 		        </div>
-		        <div class="modal-body">
-		        	<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
-		        	<textarea id="commentDetails" rows='4'></textarea>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
+
+		        <form action="" method="post">
+		        	<div class="modal-body">
+		        		<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
+		        		<textarea id="commentDetails" rows='4' name="comment"></textarea>
+		        	</div>
+		        	<div class="modal-footer">
+		        		<button type="submit" class="btn btn-success" name="updateBtn">Update</button>
+		        	  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		        	</div>
+		        </form>
+		       
 		      </div>
 		    </div>
 		</div>		
