@@ -169,24 +169,22 @@ if(isset($_POST['updateBtn'])){
 		<!-- modal start -->
 		<div class="modal fade" id="myModal" role="dialog">
 		    <div class="modal-dialog modal-sm">
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <button type="button" class="close" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title">Modal Header</h4>
-		        </div>
-
-		        <form action="" method="post">
-		        	<div class="modal-body">
-		        		<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
-		        		<textarea id="commentDetails" rows='4' name="comment"></textarea>
-		        	</div>
-		        	<div class="modal-footer">
-		        		<button type="submit" class="btn btn-success" name="updateBtn">Update</button>
-		        	  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-		        	</div>
-		        </form>
-		       
-		      </div>
+		      	<div class="modal-content">
+			        <div class="modal-header">
+			          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+			          	<h3 class="modal-title text-center">Edit your comment</h3>
+			        </div>
+			        <form action="" method="post">
+			        	<div class="modal-body form-group">
+			        		<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
+			        		<textarea class="form-control" id="commentDetails" rows='4' name="comment"></textarea>
+			        	</div>
+			        	<div class="modal-footer">
+			        		<button type="submit" class="btn btn-success" name="updateBtn">Update</button>
+			        	  	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			        	</div>
+			        </form>
+		      	</div>
 		    </div>
 		</div>		
 	</body>

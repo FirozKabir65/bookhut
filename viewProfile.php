@@ -75,9 +75,11 @@
 						<div class="col-md-8"><?php echo $profileInfo['address'];?></div>
 					</div>
 					<hr>
-					<div class="row col-md-offset-2 col-md-3">
-
-						<a href="editProfile.php?id=<?php echo $_SESSION['userId']?>" class="btn btn-info btn-block">Edit Profile</a>
+					<div class="row col-md-offset-4 col-md-4">
+						<div class="edit-btn">
+							<a href="editProfile.php?id=<?php echo $_SESSION['userId']?>"><button type="btn" class="btn btn-info btn-block">Edit Profile</button></a>
+						</div>
+						
 					</div>
 					
 	        	</div>
@@ -176,27 +178,25 @@
     <!--Footer start-->
     <?php include('includes/footer.php');?>
     <!--Footer end-->
-
+		<!-- modal start -->
     	<div class="modal fade" id="myModal" role="dialog">
     	    <div class="modal-dialog modal-sm">
-    	      <div class="modal-content">
-    	        <div class="modal-header">
-    	          <button type="button" class="close" data-dismiss="modal">&times;</button>
-    	          <h4 class="modal-title">Modal Header</h4>
-    	        </div>
-
-    	        <form action="" method="post">
-    	        	<div class="modal-body">
-    	        		<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
-    	        		<textarea id="commentDetails" rows='4' name="comment"></textarea>
-    	        	</div>
-    	        	<div class="modal-footer">
-    	        		<button type="submit" class="btn btn-success" name="updateBtn">Update</button>
-    	        	  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    	        	</div>
-    	        </form>
-    	       
-    	      </div>
+    	      	<div class="modal-content">
+	    	        <div class="modal-header">
+	    	          	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	    	          	<h4 class="modal-title text-center">Edit your comment</h4>
+	    	        </div>
+	    	        <form action="" method="post">
+	    	        	<div class="modal-body">
+	    	        		<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
+	    	        		<textarea id="commentDetails" rows='4' name="comment"></textarea>
+	    	        	</div>
+	    	        	<div class="modal-footer">
+	    	        		<button type="submit" class="btn btn-success" name="updateBtn">Update</button>
+	    	        	  	<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	    	        	</div>
+	    	        </form>
+    	      	</div>
     	    </div>
     	</div>		
     </body>

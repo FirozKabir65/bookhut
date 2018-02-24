@@ -39,7 +39,7 @@
 			<nav class="navbar navbar-default header">
 			  	<div class="container-fluid">
 			    	<div class="navbar-header">
-			      		<a class="navbar-brand" href=""><img src="images/bhlogo.png" alt="logo"></a>
+			      		<a class="navbar-brand" href=""><img src="images/bh-logo.png" alt="logo"></a>
 			    	</div>
 			  	</div>
 			</nav>

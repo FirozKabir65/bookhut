@@ -9,7 +9,7 @@ html, body {
 }
 
 body {
-	background-image: url('../images/templateImages/bg.png');
+	background-image: url('../images/background.png');
 }
 body, img, h3 {
 	margin: 0;
@@ -22,7 +22,7 @@ body, img, h3 {
 }
 
 .header {
-    height: 70px;
+    height: 60px;
     background-color: $header;
     border: 0px;
 
@@ -40,9 +40,9 @@ body, img, h3 {
 	}
 
     .navbar-brand img {
-	   	height: 140px; 
-	   	width: 140px;  
-	   	margin-top: -32px;
+	   	height: 60px; 
+	   	width: 80px;  
+	   	margin-top: -15px;
 	}
 
 	.navbar-brand img:hover {
@@ -54,10 +54,10 @@ body, img, h3 {
 	}
 	
 	.navbar-nav li a {
-	    padding-top: 20px;
-	    padding-bottom: 20px;
+	    padding-top: 17px;
+	    padding-bottom: 17px;
 	    color: white !important;
-	    font-size: 30px;
+	    font-size: 25px;
 	    background-color: $header;
 	}
 
@@ -67,7 +67,7 @@ body, img, h3 {
 
 	.search-field {
 		position: absolute;
-		top: 17px;
+		top: 10px;
 		right: 125px;
 		z-index: 1000;
 		// padding-top: 20px;
@@ -82,6 +82,25 @@ body, img, h3 {
 		}
 	}
 
+}
+
+// viewProfile.php edit profile button
+
+.edit-btn {
+
+	a {
+		text-decoration: none;
+	}
+	
+	button {
+		background-color: rgba(44, 62, 80, 0.9);
+		border: none;
+		padding: 8px 10px;
+
+		&:hover {
+			background-color: rgb(44, 62, 80);
+		}
+	}
 }
 
 .content-body {
@@ -252,6 +271,20 @@ body, img, h3 {
 		a:hover {
 			color: #31B0D5 !important; 
 		}
+	}
+}
+
+// viewProfile.php and homePage.php comment modal
+
+.modal {
+
+	.modal-header {
+		background-color: $header;
+		color: #fff;
+	}
+
+	.modal-footer {
+		background-color: $footer;
 	}
 }
 

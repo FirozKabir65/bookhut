@@ -6,7 +6,6 @@
 ?>
 
 
-
 <div class="left-sidebar col-lg-3 col-md-3 col-sm-4 col-xs-5">
 	<div class="row">
 		<div class="pro_pic">

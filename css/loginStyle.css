@@ -3,7 +3,7 @@ html, body {
   width: 100%; }
 
 body {
-  background-image: url("../images/templateImages/bg.png"); }
+  background-image: url("../images/background.png"); }
 
 body, img, h3 {
   margin: 0;
@@ -19,7 +19,8 @@ body, img, h3 {
     border: 0;
     border-radius: 0; }
     .wrapper .top-bar .header img {
-      height: 100px;
+      margin-top: -8px;
+      height: 80px;
       width: 100px; }
 
 .content-body {
