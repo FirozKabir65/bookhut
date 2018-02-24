@@ -50,7 +50,7 @@
                                 <select class="form-control" name="bookCategoryId">
                                     <option>---Select Book Category---</option>
                                     <?php while($result=mysqli_fetch_assoc($bookCategory)){;?>
-                                    <option value="<?php echo $result['id'];?>"><?php echo $result['categoryName'];?></option>
+                                    <option value="<?php echo $result['id'];?>" <?php if ($result['id']==$editBook['bookCategoryId']) { echo 'selected'; } ?>><?php echo $result['categoryName'];?></option>
                                     <?php } ;?>
                                 </select>
                             </div>

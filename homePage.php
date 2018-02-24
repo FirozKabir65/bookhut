@@ -132,14 +132,14 @@ if(isset($_GET['commentId'])){
 						while($allComments = mysqli_fetch_assoc($showComment)){ ?>
 							
 							<img class="commentators-image" src="<?php if(isset($allComments['profileImage'])){ echo $allComments['profileImage']; }else{ echo 'images/userImages/default_user_img.jpg';}?>" alt="">&nbsp; <span><b><?php echo $allComments['firstName'].' '.$allComments['lastName'];?></b></span><br>
-							<small class="user-comments"><?php if(isset($allComments['comment'])){
+							<small class="user-comments" id="comment<?php echo $allComments['commentId']; ?>"><?php if(isset($allComments['comment'])){
 								echo $allComments['comment'];
 							}?></small><br><br>
 
 							<?php if ($_SESSION['userId']== $allComments['id']) { ?>
-							<input type="hidden" value="<?php echo $allComments['commentId']?>">
+							<input type="hidden" value="<?php echo $allComments['commentId']; ?>">
 						<!-- comment edit delete -->
-							<a href="?commentId=<?php echo $allComments['commentId'];?>" class="btn btn-success" data-toggle="modal" data-target="#myModal">Edit</a>
+							<a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='editCommentJs(<?php echo $allComments['commentId']; ?>);'>Edit</a>
 							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="alert('Are u want to delete this comment')">Delete</a>
 							<br><br>
 							<?php } ?>
@@ -162,6 +162,9 @@ if(isset($_GET['commentId'])){
 			</div>
 		</div>
 
+		<!-- modal end -->
+		<!--Footer start-->
+		<?php include('includes/footer.php');?>
 		<!-- modal start -->
 		<div class="modal fade" id="myModal" role="dialog">
 		    <div class="modal-dialog modal-sm">
@@ -171,20 +174,23 @@ if(isset($_GET['commentId'])){
 		          <h4 class="modal-title">Modal Header</h4>
 		        </div>
 		        <div class="modal-body">
-		          <p><?php echo $commentById;?></p>
+		        	<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
+		        	<textarea id="commentDetails" rows='4'></textarea>
 		        </div>
 		        <div class="modal-footer">
 		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        </div>
 		      </div>
 		    </div>
-		</div>
-
-		<!-- modal end -->
-		<!--Footer start-->
-		<?php include('includes/footer.php');?>
-		
-		
+		</div>		
 	</body>
+
+	<script type="text/javascript">
+		function editCommentJs(id){
+			var text = document.getElementById('comment'+id).innerHTML;
+			document.getElementById('commentDetails').value = text;
+			document.getElementById('commentEdit').value = id;
+		}
+	</script>
 
 	</html>

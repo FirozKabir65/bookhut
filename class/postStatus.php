@@ -50,8 +50,10 @@
 		}
 
 		public function post_delete($id){
+			$sql = "DELETE FROM tbl_comment WHERE bookId ='$id'";
+			$sql_result = mysqli_query($this->connection,$sql);
+			
 			$sql = "DELETE FROM tbl_book WHERE id ='$id'";
-
 			$sql_result = mysqli_query($this->connection,$sql);
 			
 			if($sql_result){
