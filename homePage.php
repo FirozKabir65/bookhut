@@ -134,13 +134,14 @@ if(isset($_POST['updateBtn'])){
 							<img class="commentators-image" src="<?php if(isset($allComments['profileImage'])){ echo $allComments['profileImage']; }else{ echo 'images/userImages/default_user_img.jpg';}?>" alt="">&nbsp; <span><b><?php echo $allComments['firstName'].' '.$allComments['lastName'];?></b></span><br>
 							<small class="user-comments" id="comment<?php echo $allComments['commentId']; ?>"><?php if(isset($allComments['comment'])){
 								echo $allComments['comment'];
-							}?></small><br><br>
+							}?></small><p><?php echo $allComments['created_at']?></p>
+							<br>
 
 							<?php if ($_SESSION['userId']== $allComments['id']) { ?>
 							<input type="hidden" value="<?php echo $allComments['commentId']; ?>">
 						<!-- comment edit delete -->
 							<a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='editCommentJs(<?php echo $allComments['commentId']; ?>);'>Edit</a>
-							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="confirm('Are u want to delete this comment')">Delete</a>
+							<a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="return confirm('Are u want to delete this comment')">Delete</a>
 							<br><br>
 							<?php } ?>
 							<?php } ?>

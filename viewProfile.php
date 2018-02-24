@@ -7,13 +7,14 @@
 	require_once ('class/comment.php');
 
 	$comment = new Comment();
-
-
-
 	$registration = new Registration();
 	$userLoginInfo = $registration->user_info($_SESSION['userId']);
 
 	$status = new Status();
+	if(isset($_GET['del'])){
+		$id = ($_GET['id']);
+		$delete = $status->post_delete($id);
+	}
 	$userProfile = new UserProfile();
 	$img = $userProfile->user_image();
 	
@@ -21,13 +22,14 @@
 	    $profileInfo = $userProfile->show_user_profile($id);
 	    $status = $status->show_post_by_id($id);
 	}
-
 	if(isset($_GET['status'])){
 		$id = ($_GET['id']);
 		$delete = $comment->delete($id);
 	}
-
-
+	if(isset($_POST['updateBtn'])){
+		$updateComment = $comment->update_comment($_POST);
+		
+	}
 ?>
 
 <!--Header start-->
@@ -122,7 +124,8 @@
         		</div>
         		<a href="<?php echo $result['bookPath'];?>" download><button class="glyphicon glyphicon-cloud-download btn btn-primary" type="button" title="Download" style="margin-left: 15px;"></button></a>
         		<a href="editBookInfo.php?id=<?php echo $result['id'];?>"><button class="glyphicon glyphicon-edit btn btn-success" type="button" title="Edit"></button></a>
-        		<button class="glyphicon glyphicon-trash btn btn-danger" type="button" title="Delete"></button>
+
+        		<a href="?del=delete&&id=<?php echo $result['id'];?>" class="glyphicon glyphicon-trash btn btn-danger" title="Delete"></a>
 
         		<!-- comment section start -->
 
@@ -145,15 +148,18 @@
         		        
         		        
         		        <img class="commentators-image" src="<?php if(isset($allComments['profileImage'])){ echo $allComments['profileImage']; }else{ echo 'images/userImages/default_user_img.jpg';}?>" alt="">&nbsp; <span><b><?php echo $allComments['firstName'].' '.$allComments['lastName'];?></b></span><br>
-        		        <small class="user-comments"><?php if(isset($allComments['comment'])){
-        		        	echo $allComments['comment'];
-        		        }?></small><br><br>
+        		        <small class="user-comments" id="comment<?php echo $allComments['commentId']; ?>"><?php if(isset($allComments['comment'])){
+								echo $allComments['comment'];
+						}?></small>
+						<p><?php echo $allComments['created_at']?></p>
+							<br>
 
         		        <?php if ($_SESSION['userId']== $allComments['id']) { ?>
         		        <input type="hidden" value="<?php echo $allComments['commentId']?>">
 
-        		        <a href="" class="btn btn-success">Edit</a>
-        		        <a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger">Delete</a>
+        		        <a href="" class="btn btn-success" data-toggle="modal" data-target="#myModal" onclick='editCommentJs(<?php echo $allComments['commentId']; ?>);'>Edit</a>
+
+        		        <a href="?status=delete&&id=<?php echo $allComments['commentId']?>" class="btn btn-danger" onclick="confirm('Are u want to delete this comment')">Delete</a>
         		        <br><br>
         		        <?php } ?>
         		        <?php } ?>
@@ -167,11 +173,41 @@
             </div>
         </div>
     </div>
-
-
     <!--Footer start-->
     <?php include('includes/footer.php');?>
     <!--Footer end-->
+
+    	<div class="modal fade" id="myModal" role="dialog">
+    	    <div class="modal-dialog modal-sm">
+    	      <div class="modal-content">
+    	        <div class="modal-header">
+    	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+    	          <h4 class="modal-title">Modal Header</h4>
+    	        </div>
+
+    	        <form action="" method="post">
+    	        	<div class="modal-body">
+    	        		<input type="hidden" name="commentEdit" id="commentEdit" readonly="readonly">
+    	        		<textarea id="commentDetails" rows='4' name="comment"></textarea>
+    	        	</div>
+    	        	<div class="modal-footer">
+    	        		<button type="submit" class="btn btn-success" name="updateBtn">Update</button>
+    	        	  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    	        	</div>
+    	        </form>
+    	       
+    	      </div>
+    	    </div>
+    	</div>		
+    </body>
+
+    <script type="text/javascript">
+    	function editCommentJs(id){
+    		var text = document.getElementById('comment'+id).innerHTML;
+    		document.getElementById('commentDetails').value = text;
+    		document.getElementById('commentEdit').value = id;
+    	}
+    </script>
 
 </body>
 
